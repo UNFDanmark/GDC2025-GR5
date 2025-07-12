@@ -13,7 +13,7 @@ public class WaveManagerScript : MonoBehaviour
     EnemySpawnerScript SpawnerScript;
     GameObject defaultEnemyPrefab;
     int currentDifficulty = 1;
-    int enemiesSpawned;
+
     public DifficultySettings[] difficulties;
     //for internal use?
     [SerializeField] int currentWave;
@@ -29,6 +29,7 @@ public class WaveManagerScript : MonoBehaviour
 
     IEnumerator SpawningProcess(DifficultySettings difficulty)
     {
+        int enemiesSpawned = 0;
         while (enemiesSpawned <= difficulty.amountOfEnemiesToSpawn )
         {
             if (difficulty.enemyPrefab != null)
@@ -39,7 +40,10 @@ public class WaveManagerScript : MonoBehaviour
             {
                 SpawnerScript.SpawnEnemy(defaultEnemyPrefab);
             }
-            
+
+            enemiesSpawned++;
+            print($"enemies spawned {enemiesSpawned}");
+            print($"enemies to spawn {difficulty.amountOfEnemiesToSpawn}");
             yield return new WaitForSeconds(difficulty.spawnerCooldown);
             
         }
