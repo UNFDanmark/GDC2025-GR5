@@ -1,16 +1,8 @@
 using UnityEngine;
 
-public class AngelHealth : MonoBehaviour
+public class AngelHealth : Health
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public int healthPoints = new Health().healthPoints;
+    public int maxHealthPoints;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

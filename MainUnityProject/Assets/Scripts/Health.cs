@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
     
     
 
-    public virtual void TakeDamage(int damageToTake)
+    public void TakeDamage(int damageToTake)
     {
         healthPoints = healthPoints - damageToTake;
         if (healthPoints <= 0)
@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    public virtual void Heal(int amountToHeal)
+    public  void Heal(int amountToHeal)
     {
         if (healthPoints <= 0)
         {
