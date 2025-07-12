@@ -3,7 +3,7 @@ using UnityEngine;
 public class WaveManagerScript : MonoBehaviour
 {
 
-    public Difficulty[] difficulties = new []{};
+    public Difficulty[] difficulties;
     [SerializeField] int currentWave;
 
     [SerializeField] GameObject enemySpawner;
