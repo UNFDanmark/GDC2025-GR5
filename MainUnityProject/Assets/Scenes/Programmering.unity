@@ -751,14 +751,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulties:
-  - _difficulty: 0
+  - difficultyName: 
     amountOfEnemiesToSpawn: 0
     waveTimeLength: 0
     spawnerCooldown: 0
     enemyPrefab: {fileID: 0}
   currentWave: 0
   enemySpawner: {fileID: 0}
-  EnemySpawnerObj: {fileID: 0}
 --- !u!4 &845517162
 Transform:
   m_ObjectHideFlags: 0

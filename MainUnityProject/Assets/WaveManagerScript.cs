@@ -2,20 +2,11 @@ using UnityEngine;
 
 public class WaveManagerScript : MonoBehaviour
 {
-
-    public Difficulty[] difficulties;
+    
+    public DifficultySettings[] difficulties;
     [SerializeField] int currentWave;
 
     [SerializeField] GameObject enemySpawner;
- 
-    
-        
-    
-    
-    
-    
-    public GameObject EnemySpawnerObj;
-
 
     public void SpawnWave()
     {
@@ -23,7 +14,7 @@ public class WaveManagerScript : MonoBehaviour
     }
 
 
-    public void SpawnerLogic(int amountOfEnemiesToSpawn, float spawnerCooldown)
+    public void DifficultySelector()
     {
         
     }

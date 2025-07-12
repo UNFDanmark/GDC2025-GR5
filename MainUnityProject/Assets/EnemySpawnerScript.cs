@@ -13,6 +13,11 @@ public class EnemySpawnerScript : MonoBehaviour
         return Instantiate(enemyPrefab, CalculateSpawnPosition(), Quaternion.identity);
     }
 
+    void Update()
+    {
+        SpawnEnemy(TestEnemy);
+    }
+
     public Vector3 CalculateSpawnPosition()
     {
         //generates polar coordinate from range
