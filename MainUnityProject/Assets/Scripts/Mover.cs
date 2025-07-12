@@ -2,7 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class Mover : MonoBehaviour
+public class Mover : Health
 {
    
    public Vector3 target = new Vector3(0, 0, 0);
@@ -19,8 +19,15 @@ public class Mover : MonoBehaviour
    void FixedUpdate()
    {
       MoveTowards();
-   }
 
+   
+}
+
+   public override void Heal(int amountToHeal)
+   {
+      base.Heal(amountToHeal);
+      
+   }
 
    public void MoveTowards()
    {
