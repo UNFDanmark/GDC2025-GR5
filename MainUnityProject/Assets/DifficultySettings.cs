@@ -12,6 +12,7 @@ public class DifficultySettings
     
     //[SerializeField]  difficulty _difficulty;
     [SerializeField] public int amountOfEnemiesToSpawn;
+    [SerializeField] public bool useWaveTimer;
     [SerializeField] public float waveTimeLength;
     [SerializeField] public float spawnerCooldown;
     

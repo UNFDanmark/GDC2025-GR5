@@ -29,25 +29,58 @@ public class WaveManagerScript : MonoBehaviour
 
     IEnumerator SpawningProcess(DifficultySettings difficulty)
     {
+        
+        
+        
+        
         int enemiesSpawned = 0;
-        while (enemiesSpawned <= difficulty.amountOfEnemiesToSpawn )
-        {
-            if (difficulty.enemyPrefab != null)
-            {
-                SpawnerScript.SpawnEnemy(difficulty.enemyPrefab);    
-            }
-            else
-            {
-                SpawnerScript.SpawnEnemy(defaultEnemyPrefab);
-            }
 
-            enemiesSpawned++;
-            print($"enemies spawned {enemiesSpawned}");
-            print($"enemies to spawn {difficulty.amountOfEnemiesToSpawn}");
-            yield return new WaitForSeconds(difficulty.spawnerCooldown);
+        if (difficulty.useWaveTimer)
+        {
+            float localSpawnerCooldown = difficulty.waveTimeLength / difficulty.amountOfEnemiesToSpawn;
+            
+            while (enemiesSpawned <= difficulty.amountOfEnemiesToSpawn -1 )
+            {
+                if (difficulty.enemyPrefab != null)
+                {
+                    SpawnerScript.SpawnEnemy(difficulty.enemyPrefab);    
+                }
+                else
+                {
+                    SpawnerScript.SpawnEnemy(defaultEnemyPrefab);
+                }
+
+                enemiesSpawned++;
+                // print($"enemies spawned {enemiesSpawned}");
+                // print($"enemies to spawn {difficulty.amountOfEnemiesToSpawn}");
+                yield return new WaitForSeconds(localSpawnerCooldown);
+            
+            }    
             
         }
-        print($"Spawning process done, spawned {enemiesSpawned} out of {difficulty.amountOfEnemiesToSpawn}");
+        else
+        {
+            while (enemiesSpawned <= difficulty.amountOfEnemiesToSpawn -1 )
+            {
+                if (difficulty.enemyPrefab != null)
+                {
+                    SpawnerScript.SpawnEnemy(difficulty.enemyPrefab);    
+                }
+                else
+                {
+                    SpawnerScript.SpawnEnemy(defaultEnemyPrefab);
+                }
+
+                enemiesSpawned++;
+                // print($"enemies spawned {enemiesSpawned}");
+                // print($"enemies to spawn {difficulty.amountOfEnemiesToSpawn}");
+                yield return new WaitForSeconds(difficulty.spawnerCooldown);
+            
+            }    
+        }
+        print($"Spawning process done, spawned {enemiesSpawned} out of {difficulty.amountOfEnemiesToSpawn} enemies");
+        print($"Increasing difficulty from {currentDifficulty} to {currentDifficulty +1} ");
+        ChangeDifficulty();
     }
     
 
