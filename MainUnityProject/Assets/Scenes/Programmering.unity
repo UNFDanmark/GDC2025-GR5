@@ -653,8 +653,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719ad5c4d1a7dfe44ae8d7732bf2af78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outerRange: 100
-  innerRange: 50
+  outerRange: 1000
+  innerRange: 500
   height: 1
   TestEnemy: {fileID: 7717888739778281036, guid: 84b50eca0d720dd41abf77dcdbd71f27, type: 3}
 --- !u!4 &671274054
