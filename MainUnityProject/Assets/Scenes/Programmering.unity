@@ -751,9 +751,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulties:
-  - difficultyName: 
+  - difficultyName: Tutorial
     amountOfEnemiesToSpawn: 0
     waveTimeLength: 0
+    spawnerCooldown: 0
+    enemyPrefab: {fileID: 0}
+  - difficultyName: sigma
+    amountOfEnemiesToSpawn: 50
+    waveTimeLength: 40
+    spawnerCooldown: 0
+    enemyPrefab: {fileID: 0}
+  - difficultyName: lvl 3
+    amountOfEnemiesToSpawn: 50
+    waveTimeLength: 40
+    spawnerCooldown: 0
+    enemyPrefab: {fileID: 0}
+  - difficultyName: lvl 3
+    amountOfEnemiesToSpawn: 50
+    waveTimeLength: 40
     spawnerCooldown: 0
     enemyPrefab: {fileID: 0}
   currentWave: 0

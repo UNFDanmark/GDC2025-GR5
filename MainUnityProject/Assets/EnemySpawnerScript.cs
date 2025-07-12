@@ -1,9 +1,12 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class EnemySpawnerScript : MonoBehaviour
 {
+    
+    
     [SerializeField] float outerRange;
     [SerializeField] float innerRange;
     [SerializeField] float height;
@@ -13,10 +16,10 @@ public class EnemySpawnerScript : MonoBehaviour
         return Instantiate(enemyPrefab, CalculateSpawnPosition(), Quaternion.identity);
     }
 
-    void Update()
-    {
-        SpawnEnemy(TestEnemy);
-    }
+    
+    
+
+  
 
     public Vector3 CalculateSpawnPosition()
     {

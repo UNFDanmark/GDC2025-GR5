@@ -11,11 +11,11 @@ public class DifficultySettings
 
     
     //[SerializeField]  difficulty _difficulty;
-    [SerializeField] int amountOfEnemiesToSpawn;
-    [SerializeField] float waveTimeLength;
-    [SerializeField] float spawnerCooldown;
+    [SerializeField] public int amountOfEnemiesToSpawn;
+    [SerializeField] public float waveTimeLength;
+    [SerializeField] public float spawnerCooldown;
     
-    [SerializeField] GameObject enemyPrefab;
+    [SerializeField] public GameObject enemyPrefab;
     
     
 }

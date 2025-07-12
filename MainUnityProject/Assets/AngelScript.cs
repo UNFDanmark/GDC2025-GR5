@@ -9,14 +9,16 @@ public class AngelScript : MonoBehaviour
 
     void Start()
     {
-        FetchInfo();
         
+        FetchInfo();
+        Agent.SetDestination(Target.transform.position);
     }
 
     void FixedUpdate()
     {
-        Agent.SetDestination(Target.transform.position);
+        
     }
+    
 
 
     private void FetchInfo()
