@@ -57,6 +57,7 @@ public class AngelScript : MonoBehaviour
     IEnumerator StartDeathProcess()
     {
         isDead = true;
+        FindSelfInArray();
         
         //particle stuff here
         
@@ -66,12 +67,29 @@ public class AngelScript : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    public void FindSelfInArray()
+    {
+        int index = 0;
+        foreach (var angel in WaveManagerScript.Instance.enemyList)
+        {
+            if (this.gameObject == angel)
+            {
+                
+                break;
+            }
+
+            index++;
+        }
+        WaveManagerScript.Instance.RemoveEnemyFromList(index);
+    }
+
     public void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Projectile"))
         {
             ProjectileScript projectileScript = other.gameObject.GetComponent<ProjectileScript>();
             TakeDamage(projectileScript.attackDamage);
+            projectileScript.KillSelf();
         }
     }
 }

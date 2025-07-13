@@ -18,4 +18,9 @@ public class ProjectileScript : MonoBehaviour
         critDamageMult = weapon.critDamageMult;
         critChance = weapon.critChance;
     }
+
+    public void KillSelf()
+    {
+        Destroy(this.gameObject);
+    }
 }

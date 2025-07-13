@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0
-  ProjectilePrefab: {fileID: 4968851036529052376, guid: 227fef815d71a6946b779878489c4ff6, type: 3}
+  projectilePrefab: {fileID: 4968851036529052376, guid: 227fef815d71a6946b779878489c4ff6, type: 3}
   projectileSpeed: 0.5
   attackDamage: 1
   attackSpeed: 1
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 2
-  ProjectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 0}
   projectileSpeed: 0
   attackDamage: 0
   attackSpeed: 0
@@ -920,7 +920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 1
-  ProjectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 0}
   projectileSpeed: 0
   attackDamage: 0
   attackSpeed: 0
@@ -1026,10 +1026,16 @@ MonoBehaviour:
   enemyList: []
   difficulties:
   - difficultyName: tutorial
-    amountOfEnemiesToSpawn: 1
+    amountOfEnemiesToSpawn: 2
     useWaveTimer: 1
     waveTimeLength: 5
     spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 84b50eca0d720dd41abf77dcdbd71f27, type: 3}
+  - difficultyName: tutorial
+    amountOfEnemiesToSpawn: 500
+    useWaveTimer: 1
+    waveTimeLength: 5
+    spawnerCooldown: 0
     enemyPrefab: {fileID: 7717888739778281036, guid: 84b50eca0d720dd41abf77dcdbd71f27, type: 3}
   currentWave: 0
   enemySpawner: {fileID: 671274052}

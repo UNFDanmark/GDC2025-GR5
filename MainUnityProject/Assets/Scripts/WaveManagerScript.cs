@@ -130,6 +130,11 @@ public class WaveManagerScript : MonoBehaviour
         */
     }
 
+    public void RemoveEnemyFromList(int i)
+    {
+        enemyList.RemoveAt(i);
+    }
+
     public void ChangeDifficulty()
     {
         currentDifficulty++;

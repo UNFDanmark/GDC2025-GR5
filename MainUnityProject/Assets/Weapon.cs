@@ -9,7 +9,7 @@ public enum WeaponType {Ballista, Canon, Catapult}
 public class Weapon : MonoBehaviour
 {
     public WeaponType weaponType;
-    public GameObject ProjectilePrefab;
+    public GameObject projectilePrefab;
     public float projectileSpeed;
     public int attackDamage;
     public float attackSpeed;
@@ -29,8 +29,6 @@ public class Weapon : MonoBehaviour
     
     public void UpgradeStat(StatType statType)
     {
-
-    
         switch (statType)
         {
             case StatType.attackDamage:
@@ -54,20 +52,21 @@ public class Weapon : MonoBehaviour
     [ContextMenu("FireBullet")]
     public void ShootProjectile()
     {
-        GameObject tempProjectile = Instantiate(ProjectilePrefab, transform);
+        GameObject tempProjectile = Instantiate(projectilePrefab, transform);
        
         tempProjectile.GetComponent<Rigidbody>().AddForce(FindTarget() * projectileSpeed, ForceMode.Impulse );
     }
 
-    
     public Vector3 FindTarget()
     {
         //get first enemy in list, its probably the closest to the tower
-        Vector3 TargetPosition = WaveManagerScript.Instance.enemyList[0].transform.position;
-        //calc direction
-        Vector3 TargetDirection = TargetPosition - transform.position;
-        return TargetDirection;
+        if ( WaveManagerScript.Instance.enemyList.Count != 0)
+        {
+            Vector3 TargetPosition = WaveManagerScript.Instance.enemyList[0].transform.position;
+            //calc direction
+            Vector3 TargetDirection = TargetPosition - transform.position;
+            return TargetDirection;    
+        }
+        return Vector3.up; //idk man i would rather return nothing here ??
     }
-    
-    
 }
