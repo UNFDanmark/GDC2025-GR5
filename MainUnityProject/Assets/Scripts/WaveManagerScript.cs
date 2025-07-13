@@ -45,10 +45,6 @@ public class WaveManagerScript : MonoBehaviour
 
     IEnumerator SpawningProcess(DifficultySettings difficulty)
     {
-        
-        
-        
-        
         int enemiesSpawned = 0;
 
         if (difficulty.useWaveTimer)
@@ -70,7 +66,6 @@ public class WaveManagerScript : MonoBehaviour
                 // print($"enemies spawned {enemiesSpawned}");
                 // print($"enemies to spawn {difficulty.amountOfEnemiesToSpawn}");
                 yield return new WaitForSeconds(localSpawnerCooldown);
-            
             }    
             
         }
@@ -110,24 +105,6 @@ public class WaveManagerScript : MonoBehaviour
         {
             return difficulties[currentDifficulty];
         }
-        /*
-        
-        switch (currentDifficulty)
-        {
-            case 1 :
-                return difficulties[0];
-            case 2 :
-                return difficulties[1];
-            case 3 :
-                return difficulties[2];
-            case 4 :
-                return difficulties[3];
-            case 5 :
-                return difficulties[4];
-            default:
-                return difficulties[0]; // should be changed to post-curated  endless run mode logic
-        }
-        */
     }
 
     public void RemoveEnemyFromList(int i)
