@@ -6,6 +6,7 @@ public class AngelScript : MonoBehaviour
 {
     public NavMeshAgent Agent;
     public GameObject Target;
+    public bool isDead;
 
     void Start()
     {

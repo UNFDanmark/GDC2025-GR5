@@ -1,9 +1,25 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveManagerScript : MonoBehaviour
 {
+    public static WaveManagerScript Instance;   
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
+    public List<GameObject> enemyList;
     void Start()
     {
         //get the spawner script
@@ -43,11 +59,11 @@ public class WaveManagerScript : MonoBehaviour
             {
                 if (difficulty.enemyPrefab != null)
                 {
-                    SpawnerScript.SpawnEnemy(difficulty.enemyPrefab);    
+                    enemyList.Add(SpawnerScript.SpawnEnemy(difficulty.enemyPrefab));  
                 }
                 else
                 {
-                    SpawnerScript.SpawnEnemy(defaultEnemyPrefab);
+                    enemyList.Add(SpawnerScript.SpawnEnemy(defaultEnemyPrefab));
                 }
 
                 enemiesSpawned++;
@@ -64,11 +80,11 @@ public class WaveManagerScript : MonoBehaviour
             {
                 if (difficulty.enemyPrefab != null)
                 {
-                    SpawnerScript.SpawnEnemy(difficulty.enemyPrefab);    
+                    enemyList.Add(SpawnerScript.SpawnEnemy(difficulty.enemyPrefab));  
                 }
                 else
                 {
-                    SpawnerScript.SpawnEnemy(defaultEnemyPrefab);
+                    enemyList.Add(SpawnerScript.SpawnEnemy(defaultEnemyPrefab));
                 }
 
                 enemiesSpawned++;
