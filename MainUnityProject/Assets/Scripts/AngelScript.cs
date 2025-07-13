@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,6 +8,12 @@ public class AngelScript : MonoBehaviour
     public NavMeshAgent Agent;
     public GameObject Target;
     public bool isDead;
+    
+    public int healthPoints;
+    public int maxHealth;
+    public float despawnTimer;
+
+    
 
     void Start()
     {
@@ -14,13 +21,7 @@ public class AngelScript : MonoBehaviour
         FetchInfo();
         Agent.SetDestination(Target.transform.position);
     }
-
-    void FixedUpdate()
-    {
-        
-    }
     
-
 
     private void FetchInfo()
     {
@@ -28,5 +29,49 @@ public class AngelScript : MonoBehaviour
         Target = GameObject.FindGameObjectWithTag("Tower");
     }
     
-    
+
+    public void TakeDamage(int damageToTake)
+    {
+        healthPoints = healthPoints - damageToTake;
+        if (healthPoints <= 0)
+        {
+            StartCoroutine(StartDeathProcess());
+        }
+    }
+
+    public  void Heal(int amountToHeal)
+    {
+        if (healthPoints <= 0)
+        {
+            return;
+        } else if (amountToHeal + healthPoints > maxHealth)
+        {
+            healthPoints = maxHealth;
+        }
+        else
+        {
+            healthPoints += amountToHeal;
+        }
+    }
+
+    IEnumerator StartDeathProcess()
+    {
+        isDead = true;
+        
+        //particle stuff here
+        
+        
+        //check if this is tower or angels
+        yield return new WaitForSeconds(despawnTimer); // maybe switch despawn timer for when particles are done playing
+        Destroy(this.gameObject);
+    }
+
+    public void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Projectile"))
+        {
+            ProjectileScript projectileScript = other.gameObject.GetComponent<ProjectileScript>();
+            TakeDamage(projectileScript.attackDamage);
+        }
+    }
 }

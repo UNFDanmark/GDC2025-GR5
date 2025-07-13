@@ -51,7 +51,7 @@ public class Weapon : MonoBehaviour
 
         }
     }
-
+    [ContextMenu("FireBullet")]
     public void ShootProjectile()
     {
         GameObject tempProjectile = Instantiate(ProjectilePrefab, transform);
@@ -59,7 +59,7 @@ public class Weapon : MonoBehaviour
         tempProjectile.GetComponent<Rigidbody>().AddForce(FindTarget() * projectileSpeed, ForceMode.Impulse );
     }
 
-    [ContextMenu("findtargetTest")]
+    
     public Vector3 FindTarget()
     {
         //get first enemy in list, its probably the closest to the tower

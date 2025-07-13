@@ -11,7 +11,7 @@ public class WaveManagerScript : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            
         }
         else
         {
@@ -28,7 +28,7 @@ public class WaveManagerScript : MonoBehaviour
 
     EnemySpawnerScript SpawnerScript;
     GameObject defaultEnemyPrefab;
-    int currentDifficulty = 1;
+    int currentDifficulty = 0;
 
     public DifficultySettings[] difficulties;
     //for internal use?
@@ -102,6 +102,16 @@ public class WaveManagerScript : MonoBehaviour
 
     public DifficultySettings DifficultySelector()
     {
+        if (currentDifficulty >= difficulties.Length)
+        {
+            return difficulties[0];
+        }
+        else
+        {
+            return difficulties[currentDifficulty];
+        }
+        /*
+        
         switch (currentDifficulty)
         {
             case 1 :
@@ -117,6 +127,7 @@ public class WaveManagerScript : MonoBehaviour
             default:
                 return difficulties[0]; // should be changed to post-curated  endless run mode logic
         }
+        */
     }
 
     public void ChangeDifficulty()
