@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -24,7 +27,7 @@ public class Weapon : MonoBehaviour
     public float critChanceIncreaseAmount;
 
     //other variables and references
-    
+    Queue<Vector3> TargetQueue = new Queue<Vector3>();
     
     
     public void UpgradeStat(StatType statType)
@@ -54,9 +57,10 @@ public class Weapon : MonoBehaviour
     {
         GameObject tempProjectile = Instantiate(projectilePrefab, transform);
        
-        tempProjectile.GetComponent<Rigidbody>().AddForce(FindTarget() * projectileSpeed, ForceMode.Impulse );
+        tempProjectile.GetComponent<Rigidbody>().AddForce(FindTargetBetter() * projectileSpeed, ForceMode.Impulse );
     }
 
+    //this is the old targeting system, keep for early game use
     public Vector3 FindTarget()
     {
         //get first enemy in list, its probably the closest to the tower
@@ -68,5 +72,61 @@ public class Weapon : MonoBehaviour
             return TargetDirection;    
         }
         return Vector3.up; //idk man i would rather return nothing here ??
+    }
+
+    public Vector3 FindTargetBetter()
+    {
+        //get first enemy in list, its probably the closest to the tower
+        if (TargetQueue.Count != 0)
+        {
+
+            Vector3 TargetDirection = TargetQueue.Dequeue() - transform.position;
+            return TargetDirection;    
+        }
+        return Vector3.up; //idk man i would rather return nothing here ??
+    }
+    
+
+    IEnumerator UpdateTargetQueue()
+    {
+        //having this in each weapon instance is redundant ? could have it at one shared spot    
+        //cache a copy of enemylist, then work on it
+        List<GameObject> copyOfEnemyList = new List<GameObject>(WaveManagerScript.Instance.enemyList);
+        
+        foreach (var angel in copyOfEnemyList)
+        {
+            TargetQueue.Enqueue(angel.transform.position);
+            yield return null;
+            print($"added {angel.transform.position}");
+        }
+        //calls itself when its done, should probably change this
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(UpdateTargetQueue());
+        
+    }
+    
+    IEnumerator _UpdateTargetQueue()
+    {
+        //having this in each weapon instance is redundant ? could have it at one shared spot    
+        //cache a copy of enemylist, then work on it
+        List<GameObject> copyOfEnemyList = new List<GameObject>(WaveManagerScript.Instance.enemyList);
+        
+        foreach (var angel in TargetQueue)
+        {
+            TargetQueue.Enqueue(angel.transform.position);
+            yield return null;
+            print($"added {angel.transform.position}");
+        }
+        //calls itself when its done, should probably change this
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(UpdateTargetQueue());
+        
+    }
+    
+    
+
+    void Start()
+    {
+        StartCoroutine(UpdateTargetQueue());
     }
 }

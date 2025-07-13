@@ -90,7 +90,6 @@ public class WaveManagerScript : MonoBehaviour
             }    
         }
         print($"Spawning process done, spawned {enemiesSpawned} out of {difficulty.amountOfEnemiesToSpawn} enemies");
-        print($"Increasing difficulty from {currentDifficulty} to {currentDifficulty +1} ");
         ChangeDifficulty();
     }
     
@@ -114,10 +113,12 @@ public class WaveManagerScript : MonoBehaviour
 
     public void ChangeDifficulty()
     {
+        print($"Increasing difficulty from {currentDifficulty} to {currentDifficulty +1}");
         currentDifficulty++;
     }
     public void ChangeDifficulty(int newValue)
     {
+        print($"Increasing difficulty from {currentDifficulty} to {newValue} ");        
         currentDifficulty = newValue;
     }
 

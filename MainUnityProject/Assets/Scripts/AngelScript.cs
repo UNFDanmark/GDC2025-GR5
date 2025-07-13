@@ -35,6 +35,7 @@ public class AngelScript : MonoBehaviour
         healthPoints = healthPoints - damageToTake;
         if (healthPoints <= 0)
         {
+            isDead = true;
             StartCoroutine(StartDeathProcess());
         }
     }
@@ -56,7 +57,7 @@ public class AngelScript : MonoBehaviour
 
     IEnumerator StartDeathProcess()
     {
-        isDead = true;
+        
         FindSelfInArray();
         
         //particle stuff here
