@@ -13,7 +13,7 @@ public class WeaponManagerScript : MonoBehaviour
     public GameObject Catapult;
 
     public Queue<Vector3> TargetPositions = new Queue<Vector3>();
-    public List<Vector3> TargetPos = new List<Vector3>();
+    public List<Vector3> TargetPos = new List<Vector3>(); // make this into a queue
     public float TargetUpdateTimer = 1f;
     float TargetTimerLeft;
 
@@ -31,7 +31,7 @@ public class WeaponManagerScript : MonoBehaviour
 
         if (TargetTimerLeft <= 0)
         {
-           // FindClosestTarget();
+           FillTargetPosList();
             
             TargetTimerLeft = TargetUpdateTimer;
         }
@@ -95,11 +95,15 @@ public class WeaponManagerScript : MonoBehaviour
 
     public void FillTargetPosList()
     {
+        TargetPos.Clear();
         foreach (var angel in WaveManagerScript.Instance.enemyList)
         {
+            if (angel != null)
+            {
+                TargetPos.Add(angel.transform.position);    
+            }
             
         }
-        
         
         TargetPos.Sort(new MagnitudeComparison());
         
