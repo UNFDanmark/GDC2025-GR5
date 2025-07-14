@@ -14,6 +14,8 @@ public class WeaponManagerScript : MonoBehaviour
 
     public Queue<Vector3> TargetPositions = new Queue<Vector3>();
     public List<Vector3> TargetPos = new List<Vector3>();
+    public float TargetUpdateTimer = 1f;
+    float TargetTimerLeft;
 
     void Start()
     {
@@ -25,10 +27,27 @@ public class WeaponManagerScript : MonoBehaviour
 
     void Update()
     {
+        TargetTimerLeft -= Time.deltaTime;
+
+        if (TargetTimerLeft <= 0)
+        {
+           // FindClosestTarget();
+            
+            TargetTimerLeft = TargetUpdateTimer;
+        }
+        
+        
         if (fireAction.IsPressed())
         {
             Ballista.GetComponent<BallistaScript>().ShootProjectile(FindTargetBetterBetter());
         }
+        
+        
+        
+        
+        
+        
+        
     }
 
     void OnTriggerEnter(Collider other)
@@ -43,14 +62,56 @@ public class WeaponManagerScript : MonoBehaviour
     public Vector3 FindTargetBetterBetter()
     {
         //get first enemy in list, its probably the closest to the tower
-        if (TargetPositions.Count != 0)
+        if (WaveManagerScript.Instance.enemyList.Count != 0)
         {
 
-            Vector3 TargetDirection = TargetPositions.Dequeue() - transform.position;
+            Vector3 TargetDirection = FindClosestTarget() - Ballista.transform.position;
             return TargetDirection;    
         }
         return Vector3.up; //idk man i would rather return nothing here ??
     }
+
+    public Vector3 FindClosestTarget()
+    {
+        
+        Vector3 closestVector = new Vector3(1000, 1000, 1000);
+        foreach (var angel in WaveManagerScript.Instance.enemyList)
+        {
+            if (angel != null)
+            {
+                if (angel.transform.position.magnitude < closestVector.magnitude)
+                {
+                    closestVector = angel.transform.position;
+                    Debug.DrawRay(this.transform.position, closestVector, Color.red);
+                    print(closestVector);
+                }
+            }
+        }
+        
+        
+
+        return closestVector;
+    }
+
+    public void FillTargetPosList()
+    {
+        foreach (var angel in WaveManagerScript.Instance.enemyList)
+        {
+            
+        }
+        
+        
+        TargetPos.Sort(new MagnitudeComparison());
+        
+    }
     
     
+}
+
+public class MagnitudeComparison : IComparer<Vector3>
+{
+    public int Compare(Vector3 x, Vector3 y)
+    {
+        return x.magnitude.CompareTo(y.magnitude);
+    }
 }
