@@ -7,6 +7,7 @@ public class GameManagerScript : MonoBehaviour
 {
     public static GameManagerScript Instance;
     public GameState gameState;
+    public int money; //can make float later, make upgrades for collecting money "money 25% increase" type shit
     
     void Awake()
     {
@@ -52,7 +53,25 @@ public class GameManagerScript : MonoBehaviour
         gameState = state;
     }
 
-    
-    
-    
+    public void IncreaseMoneyAmount(int amount)
+    {
+        money += amount;
+    }
+
+    public void DecreaseMoneyAmount(int amount)
+    {
+        if (money - amount < 0)
+        {
+            print($"cannot decrease {amount} from {money}");
+        }
+        else
+        {
+            money -= amount;
+        }
+        
+    }
+
+
+
+
 }

@@ -13,6 +13,7 @@ public class AngelScript : MonoBehaviour
     public int maxHealth;
     public float despawnTimer;
     public int damage;
+    public int moneyDrop;
 
     
 
@@ -65,7 +66,7 @@ public class AngelScript : MonoBehaviour
         //particle stuff here
         
         
-       
+       GameManagerScript.Instance.IncreaseMoneyAmount(moneyDrop);
         yield return new WaitForSeconds(despawnTimer); // maybe switch despawn timer for when particles are done playing
         Destroy(this.gameObject);
     }

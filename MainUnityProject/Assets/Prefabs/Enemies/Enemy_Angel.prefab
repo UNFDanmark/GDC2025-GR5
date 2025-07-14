@@ -173,3 +173,4 @@ MonoBehaviour:
   maxHealth: 1
   despawnTimer: 0
   damage: 5
+  moneyDrop: 5
