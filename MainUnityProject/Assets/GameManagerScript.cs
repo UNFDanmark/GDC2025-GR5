@@ -68,7 +68,6 @@ public class GameManagerScript : MonoBehaviour
         {
             money -= amount;
         }
-        
     }
 
 
