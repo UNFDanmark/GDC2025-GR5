@@ -37,21 +37,6 @@ public class WeaponManagerScript : MonoBehaviour
             
             TargetTimerLeft = TargetUpdateTimer;
         }
-        
-        
-        if (fireAction.IsPressed())
-        {
-            
-            
-           
-        }
-        
-        
-        
-        
-        
-        
-        
     }
 
     void OnTriggerEnter(Collider other)
@@ -71,6 +56,7 @@ public class WeaponManagerScript : MonoBehaviour
 
             Vector3 TargetDirection = TargetPositions.Dequeue() - Ballista.transform.position;
            print($"target direction length is {TargetDirection.magnitude}");
+           Debug.DrawRay(Ballista.transform.position, TargetDirection, Color.blue);
             return TargetDirection;    
         }
         return Vector3.up; //idk man i would rather return nothing here ??
@@ -100,6 +86,7 @@ public class WeaponManagerScript : MonoBehaviour
 
     public void FillTargetPosList()
     {
+        TargetPositions.Clear();
         TargetPos.Clear();
         foreach (var angel in WaveManagerScript.Instance.enemyList)
         {
@@ -114,8 +101,9 @@ public class WeaponManagerScript : MonoBehaviour
 
         foreach (var pos in TargetPos)
         {
+            
             TargetPositions.Enqueue(pos);
-            print(pos.magnitude);
+            print($"target position is {pos}");
         }
         
     }
