@@ -35,6 +35,8 @@ public class WeaponManagerScript : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             TargetPositions.Enqueue(other.gameObject.GetComponent<Transform>().position);
+            
+           // print($"enqueued an object, queue has {TargetPositions.Count} length");
         }
     }
 }
