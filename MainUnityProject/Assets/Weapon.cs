@@ -95,9 +95,14 @@ public class Weapon : MonoBehaviour
         
         foreach (var angel in copyOfEnemyList)
         {
-            TargetQueue.Enqueue(angel.transform.position);
+            if (angel != null)
+            {
+                TargetQueue.Enqueue(angel.transform.position);
+                print($"added {angel.transform.position}");
+            }
+            
             yield return null;
-            print($"added {angel.transform.position}");
+            
         }
         //calls itself when its done, should probably change this
         yield return new WaitForSeconds(0.5f);
@@ -111,7 +116,7 @@ public class Weapon : MonoBehaviour
         //cache a copy of enemylist, then work on it
         List<GameObject> copyOfEnemyList = new List<GameObject>(WaveManagerScript.Instance.enemyList);
         
-        foreach (var angel in TargetQueue)
+        foreach (var angel in copyOfEnemyList)
         {
             TargetQueue.Enqueue(angel.transform.position);
             yield return null;
