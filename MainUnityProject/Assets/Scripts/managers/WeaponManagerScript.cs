@@ -40,9 +40,11 @@ public class WeaponManagerScript : MonoBehaviour
 
     public void FireWeapons()
     {
-        if (ballistaScript.canFire())
+        Vector3 Target = FindTargetBetterBetter();
+        //vector3.up is the value returned if there is no targets
+        if (ballistaScript.canFire() && Target != Vector3.up)
         {
-            ballistaScript.ShootProjectile(FindTargetBetterBetter());    
+            ballistaScript.ShootProjectile(Target);    
         }
     }
 

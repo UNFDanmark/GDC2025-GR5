@@ -59,13 +59,14 @@ public class Weapon : MonoBehaviour
         GameObject tempProjectile = Instantiate(projectilePrefab, transform);
        tempProjectile.GetComponent<ProjectileScript>().GetStatsFromWeapon(this);
         tempProjectile.GetComponent<Rigidbody>().AddForce(targetDirection * projectileSpeed, ForceMode.Impulse );
+        cooldownleft = atkCooldown;
     }
 
     public bool canFire()
     {
         if (cooldownleft <= 0)
         {
-            cooldownleft = atkCooldown;
+            
             return true;
         }
         else

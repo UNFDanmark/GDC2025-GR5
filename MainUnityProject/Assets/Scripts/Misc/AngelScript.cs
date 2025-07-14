@@ -12,6 +12,7 @@ public class AngelScript : MonoBehaviour
     public int healthPoints;
     public int maxHealth;
     public float despawnTimer;
+    public int damage;
 
     
 
@@ -93,6 +94,16 @@ public class AngelScript : MonoBehaviour
             ProjectileScript projectileScript = other.gameObject.GetComponent<ProjectileScript>();
             TakeDamage(projectileScript.attackDamage);
             projectileScript.KillSelf();
+        } 
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Tower"))
+        {
+            print("killed by tower");
+            other.gameObject.GetComponent<Health>().TakeDamage(damage);
+            StartCoroutine(StartDeathProcess());
         }
     }
 }
