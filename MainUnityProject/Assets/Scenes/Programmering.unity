@@ -754,7 +754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &450975240
 Transform:
   m_ObjectHideFlags: 0
@@ -1128,6 +1128,8 @@ MonoBehaviour:
   Ballista: {fileID: 13458396}
   Canon: {fileID: 0}
   Catapult: {fileID: 0}
+  TargetPos: []
+  TargetUpdateTimer: 1
 --- !u!135 &856172729
 SphereCollider:
   m_ObjectHideFlags: 0
