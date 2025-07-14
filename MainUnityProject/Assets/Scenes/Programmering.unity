@@ -1073,7 +1073,6 @@ GameObject:
   m_Component:
   - component: {fileID: 856172727}
   - component: {fileID: 856172728}
-  - component: {fileID: 856172729}
   m_Layer: 0
   m_Name: WeaponManager
   m_TagString: Untagged
@@ -1108,49 +1107,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03708ebc1dc08424599dbf6d5dc4fdc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireAction:
-    m_Name: Fire
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: e6c8ad07-aafa-47ca-8605-f831b6e082a0
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: db7ea207-a828-47ba-97f8-40c10c23297d
-      m_Path: <Keyboard>/f
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Fire
-      m_Flags: 0
-    m_Flags: 0
   Ballista: {fileID: 13458396}
   Canon: {fileID: 0}
   Catapult: {fileID: 0}
   TargetPos: []
   TargetUpdateTimer: 1
---- !u!135 &856172729
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856172726}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 380
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1437139425
 GameObject:
   m_ObjectHideFlags: 0
