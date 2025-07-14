@@ -14,7 +14,7 @@ public class WeaponManagerScript : MonoBehaviour
 
     public Queue<Vector3> TargetPositions = new Queue<Vector3>();
     public List<Vector3> TargetPos = new List<Vector3>(); // make this into a queue
-    public float TargetUpdateTimer = 1f;
+    public float TargetUpdateTimer = 0.5f;
     float TargetTimerLeft;
 
     void Start()
@@ -31,7 +31,9 @@ public class WeaponManagerScript : MonoBehaviour
 
         if (TargetTimerLeft <= 0)
         {
+            print("timer went off");
            FillTargetPosList();
+           Ballista.GetComponent<BallistaScript>().ShootProjectile(FindTargetBetterBetter());
             
             TargetTimerLeft = TargetUpdateTimer;
         }
@@ -39,7 +41,9 @@ public class WeaponManagerScript : MonoBehaviour
         
         if (fireAction.IsPressed())
         {
-            Ballista.GetComponent<BallistaScript>().ShootProjectile(FindTargetBetterBetter());
+            
+            
+           
         }
         
         
@@ -54,9 +58,9 @@ public class WeaponManagerScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            TargetPositions.Enqueue(other.gameObject.GetComponent<Transform>().position);
+           // TargetPositions.Enqueue(other.gameObject.GetComponent<Transform>().position);
             
-            print($"enqueued an object, queue has {TargetPositions.Count} length");
+         //   print($"enqueued an object, queue has {TargetPositions.Count} length");
         }
     }
     public Vector3 FindTargetBetterBetter()
@@ -65,7 +69,8 @@ public class WeaponManagerScript : MonoBehaviour
         if (WaveManagerScript.Instance.enemyList.Count != 0)
         {
 
-            Vector3 TargetDirection = FindClosestTarget() - Ballista.transform.position;
+            Vector3 TargetDirection = TargetPositions.Dequeue() - Ballista.transform.position;
+           print($"target direction length is {TargetDirection.magnitude}");
             return TargetDirection;    
         }
         return Vector3.up; //idk man i would rather return nothing here ??
@@ -106,6 +111,12 @@ public class WeaponManagerScript : MonoBehaviour
         }
         
         TargetPos.Sort(new MagnitudeComparison());
+
+        foreach (var pos in TargetPos)
+        {
+            TargetPositions.Enqueue(pos);
+            print(pos.magnitude);
+        }
         
     }
     

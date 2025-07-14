@@ -28,11 +28,11 @@ public class ProjectileScript : MonoBehaviour
 
     void Update()
     {
-        deathTimer -= Time.deltaTime;
-
-        if (deathTimer <= 0)
-        {
-            KillSelf();
-        }
+        // deathTimer -= Time.deltaTime;
+        //
+        // if (deathTimer <= 0)
+        // {
+        //     KillSelf();
+        // }
     }
 }

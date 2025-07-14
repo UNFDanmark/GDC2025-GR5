@@ -1029,7 +1029,7 @@ MonoBehaviour:
   enemyList: []
   difficulties:
   - difficultyName: tutorial
-    amountOfEnemiesToSpawn: 2000
+    amountOfEnemiesToSpawn: 200
     useWaveTimer: 1
     waveTimeLength: 5
     spawnerCooldown: 4.5
