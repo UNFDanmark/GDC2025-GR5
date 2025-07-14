@@ -20,13 +20,13 @@ public class AngelScript : MonoBehaviour
     {
         healthPoints = maxHealth;
         FetchInfo();
-        Agent.SetDestination(Target.transform.position);
+        
     }
     
 
     private void FetchInfo()
     {
-        Agent = GetComponent<NavMeshAgent>();
+        
         Target = GameObject.FindGameObjectWithTag("Tower");
     }
     
