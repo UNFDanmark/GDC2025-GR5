@@ -87,6 +87,17 @@ public class Weapon : MonoBehaviour
         }
         return Vector3.up; //idk man i would rather return nothing here ??
     }
+    public Vector3 FindTargetBetterBetter()
+    {
+        //get first enemy in list, its probably the closest to the tower
+        if (TargetQueue.Count != 0)
+        {
+
+            Vector3 TargetDirection = TargetQueue.Dequeue() - transform.position;
+            return TargetDirection;    
+        }
+        return Vector3.up; //idk man i would rather return nothing here ??
+    }
     
 
     private void UpdateTargetQueue()
@@ -106,6 +117,10 @@ public class Weapon : MonoBehaviour
         }
         
     }
+
+    
+
+    
     
     
 
