@@ -17,8 +17,12 @@ public class WeaponManagerScript : MonoBehaviour
     public float TargetUpdateTimer = 0.5f;
     float TargetTimerLeft;
 
+    BallistaScript ballistaScript;
+    //make the other scripts here
+
     void Start()
     {
+        FetchInfo();
         TargetPositions.Clear();
         TargetPos.Clear();
     }
@@ -28,13 +32,27 @@ public class WeaponManagerScript : MonoBehaviour
         TargetTimerLeft -= Time.deltaTime;
         if (TargetTimerLeft <= 0)
         {
-            
-            print("timer went off");
            FillTargetPosList();
-           Ballista.GetComponent<BallistaScript>().ShootProjectile(FindTargetBetterBetter());
-            
-            TargetTimerLeft = TargetUpdateTimer;
+           
+           TargetTimerLeft = TargetUpdateTimer;
         }
+        FireWeapons();
+    }
+
+    public void FireWeapons()
+    {
+        if (ballistaScript.canFire())
+        {
+            print("hiii");
+            ballistaScript.ShootProjectile(FindTargetBetterBetter());    
+        }
+        
+        
+    }
+
+    public void FetchInfo()
+    {
+       ballistaScript = Ballista.GetComponent<BallistaScript>();
     }
 
     public Vector3 FindTargetBetterBetter()
@@ -42,7 +60,6 @@ public class WeaponManagerScript : MonoBehaviour
         //get first enemy in list, its probably the closest to the tower
         if (WaveManagerScript.Instance.enemyList.Count != 0)
         {
-
             Vector3 TargetDirection = TargetPositions.Dequeue() - Ballista.transform.position;
            print($"target direction length is {TargetDirection.magnitude}");
            Debug.DrawRay(Ballista.transform.position, TargetDirection, Color.blue);

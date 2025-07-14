@@ -28,9 +28,8 @@ public class Weapon : MonoBehaviour
     
 
     //other variables and references
-    Queue<Vector3> TargetQueue = new Queue<Vector3>();
-    public float queueCooldown;
     float cooldownleft;
+    [SerializeField]float atkCooldown;
     
     public void UpgradeStat(StatType statType)
     {
@@ -60,5 +59,23 @@ public class Weapon : MonoBehaviour
         GameObject tempProjectile = Instantiate(projectilePrefab, transform);
        
         tempProjectile.GetComponent<Rigidbody>().AddForce(targetDirection * projectileSpeed, ForceMode.Impulse );
+    }
+
+    public bool canFire()
+    {
+        if (cooldownleft <= 0)
+        {
+            cooldownleft = atkCooldown;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    void Update()
+    {
+        cooldownleft -= Time.deltaTime;
     }
 }
