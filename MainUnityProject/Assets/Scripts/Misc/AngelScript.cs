@@ -17,7 +17,7 @@ public class AngelScript : MonoBehaviour
 
     void Start()
     {
-        
+        healthPoints = maxHealth;
         FetchInfo();
         Agent.SetDestination(Target.transform.position);
     }
@@ -32,7 +32,8 @@ public class AngelScript : MonoBehaviour
 
     public void TakeDamage(int damageToTake)
     {
-        healthPoints = healthPoints - damageToTake;
+        healthPoints -= damageToTake;
+        print($"damage is {damageToTake}");
         if (healthPoints <= 0)
         {
             isDead = true;

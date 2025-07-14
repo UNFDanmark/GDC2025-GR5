@@ -159,7 +159,7 @@ MonoBehaviour:
   atkSpeedIncreaseAmount: 0
   critDamageMultIncreaseAmount: 0
   critChanceIncreaseAmount: 0
-  atkCooldown: 0.2
+  atkCooldown: 0.05
 --- !u!4 &13458398
 Transform:
   m_ObjectHideFlags: 0

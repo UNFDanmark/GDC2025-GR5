@@ -57,7 +57,7 @@ public class Weapon : MonoBehaviour
     public void ShootProjectile(Vector3 targetDirection)
     {
         GameObject tempProjectile = Instantiate(projectilePrefab, transform);
-       
+       tempProjectile.GetComponent<ProjectileScript>().GetStatsFromWeapon(this);
         tempProjectile.GetComponent<Rigidbody>().AddForce(targetDirection * projectileSpeed, ForceMode.Impulse );
     }
 
