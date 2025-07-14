@@ -6,19 +6,18 @@ using UnityEngine.InputSystem;
 
 public class WeaponManagerScript : MonoBehaviour
 {
-    
     //weapon objects
     public GameObject Ballista;
     public GameObject Canon;
     public GameObject Catapult;
-
+    //target related variables
     public Queue<Vector3> TargetPositions = new Queue<Vector3>();
     public List<Vector3> TargetPos = new List<Vector3>(); // make this into a queue
     public float TargetUpdateTimer = 0.5f;
     float TargetTimerLeft;
-
+    //Weapon scripts
     BallistaScript ballistaScript;
-    //make the other scripts here
+    
 
     void Start()
     {
@@ -43,11 +42,8 @@ public class WeaponManagerScript : MonoBehaviour
     {
         if (ballistaScript.canFire())
         {
-            print("hiii");
             ballistaScript.ShootProjectile(FindTargetBetterBetter());    
         }
-        
-        
     }
 
     public void FetchInfo()
@@ -61,8 +57,7 @@ public class WeaponManagerScript : MonoBehaviour
         if (WaveManagerScript.Instance.enemyList.Count != 0)
         {
             Vector3 TargetDirection = TargetPositions.Dequeue() - Ballista.transform.position;
-           print($"target direction length is {TargetDirection.magnitude}");
-           Debug.DrawRay(Ballista.transform.position, TargetDirection, Color.blue);
+           //for debuggin --- Debug.DrawRay(Ballista.transform.position, TargetDirection, Color.blue);
             return TargetDirection;    
         }
         return Vector3.up; //idk man i would rather return nothing here ??
@@ -80,7 +75,6 @@ public class WeaponManagerScript : MonoBehaviour
         foreach (var pos in TargetPos)
         {
             TargetPositions.Enqueue(pos);
-            print($"target position is {pos}");
         }
     }
     
