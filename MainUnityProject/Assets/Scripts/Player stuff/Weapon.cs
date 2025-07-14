@@ -25,10 +25,12 @@ public class Weapon : MonoBehaviour
     public float atkSpeedIncreaseAmount;
     public float critDamageMultIncreaseAmount;
     public float critChanceIncreaseAmount;
+    
 
     //other variables and references
     Queue<Vector3> TargetQueue = new Queue<Vector3>();
-    
+    public float queueCooldown;
+    float cooldownleft;
     
     public void UpgradeStat(StatType statType)
     {
@@ -87,7 +89,7 @@ public class Weapon : MonoBehaviour
     }
     
 
-    IEnumerator UpdateTargetQueue()
+    private void UpdateTargetQueue()
     {
         //having this in each weapon instance is redundant ? could have it at one shared spot    
         //cache a copy of enemylist, then work on it
@@ -98,40 +100,26 @@ public class Weapon : MonoBehaviour
             if (angel != null)
             {
                 TargetQueue.Enqueue(angel.transform.position);
-                print($"added {angel.transform.position}");
+               // print($"added {angel.transform.position}");
             }
             
-            yield return null;
-            
         }
-        //calls itself when its done, should probably change this
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(UpdateTargetQueue());
-        
-    }
-    
-    IEnumerator _UpdateTargetQueue()
-    {
-        //having this in each weapon instance is redundant ? could have it at one shared spot    
-        //cache a copy of enemylist, then work on it
-        List<GameObject> copyOfEnemyList = new List<GameObject>(WaveManagerScript.Instance.enemyList);
-        
-        foreach (var angel in copyOfEnemyList)
-        {
-            TargetQueue.Enqueue(angel.transform.position);
-            yield return null;
-            print($"added {angel.transform.position}");
-        }
-        //calls itself when its done, should probably change this
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(UpdateTargetQueue());
         
     }
     
     
 
-    void Start()
+    void Update()
     {
-        StartCoroutine(UpdateTargetQueue());
+        cooldownleft -= Time.deltaTime;
+
+        if (cooldownleft <= 0)
+        {
+            UpdateTargetQueue();
+            cooldownleft = queueCooldown;
+        }
     }
+
+
+  
 }

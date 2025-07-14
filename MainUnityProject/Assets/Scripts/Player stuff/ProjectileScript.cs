@@ -10,6 +10,7 @@ public class ProjectileScript : MonoBehaviour
     public float critDamageMult;
     public float critChance;
 
+    float deathTimer = 5f;
 
     public void GetStatsFromWeapon(Weapon weapon)
     {
@@ -22,5 +23,16 @@ public class ProjectileScript : MonoBehaviour
     public void KillSelf()
     {
         Destroy(this.gameObject);
+    }
+
+
+    void Update()
+    {
+        deathTimer -= Time.deltaTime;
+
+        if (deathTimer <= 0)
+        {
+            KillSelf();
+        }
     }
 }

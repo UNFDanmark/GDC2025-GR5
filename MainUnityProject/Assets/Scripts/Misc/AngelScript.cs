@@ -70,18 +70,19 @@ public class AngelScript : MonoBehaviour
 
     public void FindSelfInArray()
     {
-        int index = 0;
         foreach (var angel in WaveManagerScript.Instance.enemyList)
         {
-            if (this.gameObject == angel)
+            
+            if (gameObject.GetInstanceID() == angel.GetInstanceID())
             {
-                
+                print($"instance id of self is {gameObject.GetInstanceID()} comparison to {angel.GetInstanceID()}");
+                WaveManagerScript.Instance.RemoveEnemyFromList(angel);
                 break;
             }
 
-            index++;
         }
-        WaveManagerScript.Instance.RemoveEnemyFromList(index);
+        
+        
     }
 
     public void OnCollisionEnter(Collision other)

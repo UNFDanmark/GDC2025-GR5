@@ -49,6 +49,7 @@ public class WaveManagerScript : MonoBehaviour
 
         if (difficulty.useWaveTimer)
         {
+            //calculate how many enemies to spawn pr second to be done when wavetimelength is done
             float localSpawnerCooldown = difficulty.waveTimeLength / difficulty.amountOfEnemiesToSpawn;
             
             while (enemiesSpawned <= difficulty.amountOfEnemiesToSpawn -1 )
@@ -106,9 +107,9 @@ public class WaveManagerScript : MonoBehaviour
         }
     }
 
-    public void RemoveEnemyFromList(int i)
+    public void RemoveEnemyFromList(GameObject enemy)
     {
-        enemyList.RemoveAt(i);
+        enemyList.Remove(enemy);
     }
 
     public void ChangeDifficulty()

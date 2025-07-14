@@ -159,6 +159,7 @@ MonoBehaviour:
   atkSpeedIncreaseAmount: 0
   critDamageMultIncreaseAmount: 0
   critChanceIncreaseAmount: 0
+  queueCooldown: 1
 --- !u!4 &13458398
 Transform:
   m_ObjectHideFlags: 0
@@ -322,6 +323,7 @@ MonoBehaviour:
   atkSpeedIncreaseAmount: 0
   critDamageMultIncreaseAmount: 0
   critChanceIncreaseAmount: 0
+  queueCooldown: 0
 --- !u!4 &161544803
 Transform:
   m_ObjectHideFlags: 0
@@ -930,6 +932,7 @@ MonoBehaviour:
   atkSpeedIncreaseAmount: 0
   critDamageMultIncreaseAmount: 0
   critChanceIncreaseAmount: 0
+  queueCooldown: 0
 --- !u!4 &717172659
 Transform:
   m_ObjectHideFlags: 0
@@ -1026,7 +1029,7 @@ MonoBehaviour:
   enemyList: []
   difficulties:
   - difficultyName: tutorial
-    amountOfEnemiesToSpawn: 1000
+    amountOfEnemiesToSpawn: 2000
     useWaveTimer: 1
     waveTimeLength: 5
     spawnerCooldown: 4.5
