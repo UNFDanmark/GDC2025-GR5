@@ -55,11 +55,11 @@ public class Weapon : MonoBehaviour
         }
     }
     [ContextMenu("FireBullet")]
-    public void ShootProjectile()
+    public void ShootProjectile(Vector3 targetDirection)
     {
         GameObject tempProjectile = Instantiate(projectilePrefab, transform);
        
-        tempProjectile.GetComponent<Rigidbody>().AddForce(FindTargetBetter() * projectileSpeed, ForceMode.Impulse );
+        tempProjectile.GetComponent<Rigidbody>().AddForce(targetDirection * projectileSpeed, ForceMode.Impulse );
     }
 
     //this is the old targeting system, keep for early game use
@@ -87,17 +87,7 @@ public class Weapon : MonoBehaviour
         }
         return Vector3.up; //idk man i would rather return nothing here ??
     }
-    public Vector3 FindTargetBetterBetter()
-    {
-        //get first enemy in list, its probably the closest to the tower
-        if (TargetQueue.Count != 0)
-        {
-
-            Vector3 TargetDirection = TargetQueue.Dequeue() - transform.position;
-            return TargetDirection;    
-        }
-        return Vector3.up; //idk man i would rather return nothing here ??
-    }
+    
     
 
     private void UpdateTargetQueue()
