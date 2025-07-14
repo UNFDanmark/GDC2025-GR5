@@ -1026,10 +1026,16 @@ MonoBehaviour:
   enemyList: []
   difficulties:
   - difficultyName: tutorial
-    amountOfEnemiesToSpawn: 2000
+    amountOfEnemiesToSpawn: 1000
     useWaveTimer: 1
     waveTimeLength: 5
     spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 84b50eca0d720dd41abf77dcdbd71f27, type: 3}
+  - difficultyName: tutorial
+    amountOfEnemiesToSpawn: 500
+    useWaveTimer: 1
+    waveTimeLength: 5
+    spawnerCooldown: 0
     enemyPrefab: {fileID: 7717888739778281036, guid: 84b50eca0d720dd41abf77dcdbd71f27, type: 3}
   - difficultyName: tutorial
     amountOfEnemiesToSpawn: 500
