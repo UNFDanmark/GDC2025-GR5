@@ -12,12 +12,13 @@ public class AngelScript : MonoBehaviour
     public int healthPoints;
     public int maxHealth;
     public float despawnTimer;
+    public int damage;
 
     
 
     void Start()
     {
-        
+        healthPoints = maxHealth;
         FetchInfo();
         Agent.SetDestination(Target.transform.position);
     }
@@ -32,7 +33,8 @@ public class AngelScript : MonoBehaviour
 
     public void TakeDamage(int damageToTake)
     {
-        healthPoints = healthPoints - damageToTake;
+        healthPoints -= damageToTake;
+        print($"damage is {damageToTake}");
         if (healthPoints <= 0)
         {
             isDead = true;
@@ -63,7 +65,7 @@ public class AngelScript : MonoBehaviour
         //particle stuff here
         
         
-        //check if this is tower or angels
+       
         yield return new WaitForSeconds(despawnTimer); // maybe switch despawn timer for when particles are done playing
         Destroy(this.gameObject);
     }
@@ -92,6 +94,16 @@ public class AngelScript : MonoBehaviour
             ProjectileScript projectileScript = other.gameObject.GetComponent<ProjectileScript>();
             TakeDamage(projectileScript.attackDamage);
             projectileScript.KillSelf();
+        } 
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Tower"))
+        {
+            print("killed by tower");
+            other.gameObject.GetComponent<Health>().TakeDamage(damage);
+            StartCoroutine(StartDeathProcess());
         }
     }
 }

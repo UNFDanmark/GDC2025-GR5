@@ -28,9 +28,8 @@ public class Weapon : MonoBehaviour
     
 
     //other variables and references
-    Queue<Vector3> TargetQueue = new Queue<Vector3>();
-    public float queueCooldown;
     float cooldownleft;
+    [SerializeField]float atkCooldown;
     
     public void UpgradeStat(StatType statType)
     {
@@ -58,73 +57,26 @@ public class Weapon : MonoBehaviour
     public void ShootProjectile(Vector3 targetDirection)
     {
         GameObject tempProjectile = Instantiate(projectilePrefab, transform);
-       
+       tempProjectile.GetComponent<ProjectileScript>().GetStatsFromWeapon(this);
         tempProjectile.GetComponent<Rigidbody>().AddForce(targetDirection * projectileSpeed, ForceMode.Impulse );
+        cooldownleft = atkCooldown;
     }
 
-    //this is the old targeting system, keep for early game use
-    public Vector3 FindTarget()
+    public bool canFire()
     {
-        //get first enemy in list, its probably the closest to the tower
-        if ( WaveManagerScript.Instance.enemyList.Count != 0)
+        if (cooldownleft <= 0)
         {
-            Vector3 TargetPosition = WaveManagerScript.Instance.enemyList[0].transform.position;
-            //calc direction
-            Vector3 TargetDirection = TargetPosition - transform.position;
-            return TargetDirection;    
-        }
-        return Vector3.up; //idk man i would rather return nothing here ??
-    }
-
-    public Vector3 FindTargetBetter()
-    {
-        //get first enemy in list, its probably the closest to the tower
-        if (TargetQueue.Count != 0)
-        {
-
-            Vector3 TargetDirection = TargetQueue.Dequeue() - transform.position;
-            return TargetDirection;    
-        }
-        return Vector3.up; //idk man i would rather return nothing here ??
-    }
-    
-    
-
-    private void UpdateTargetQueue()
-    {
-        //having this in each weapon instance is redundant ? could have it at one shared spot    
-        //cache a copy of enemylist, then work on it
-        List<GameObject> copyOfEnemyList = new List<GameObject>(WaveManagerScript.Instance.enemyList);
-        
-        foreach (var angel in copyOfEnemyList)
-        {
-            if (angel != null)
-            {
-                TargetQueue.Enqueue(angel.transform.position);
-               // print($"added {angel.transform.position}");
-            }
             
+            return true;
         }
-        
+        else
+        {
+            return false;
+        }
     }
-
-    
-
-    
-    
-    
 
     void Update()
     {
         cooldownleft -= Time.deltaTime;
-
-        if (cooldownleft <= 0)
-        {
-            UpdateTargetQueue();
-            cooldownleft = queueCooldown;
-        }
     }
-
-
-  
 }

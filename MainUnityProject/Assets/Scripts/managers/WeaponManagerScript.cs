@@ -6,103 +6,78 @@ using UnityEngine.InputSystem;
 
 public class WeaponManagerScript : MonoBehaviour
 {
-    public InputAction fireAction;
-    
+    //weapon objects
     public GameObject Ballista;
     public GameObject Canon;
     public GameObject Catapult;
-
+    //target related variables
     public Queue<Vector3> TargetPositions = new Queue<Vector3>();
-    public List<Vector3> TargetPos = new List<Vector3>();
-    public float TargetUpdateTimer = 1f;
+    public List<Vector3> TargetPos = new List<Vector3>(); // make this into a queue
+    public float TargetUpdateTimer = 0.5f;
     float TargetTimerLeft;
+    //Weapon scripts
+    BallistaScript ballistaScript;
+    
 
     void Start()
     {
+        FetchInfo();
         TargetPositions.Clear();
         TargetPos.Clear();
-        fireAction.Enable();
-       
     }
 
     void Update()
     {
         TargetTimerLeft -= Time.deltaTime;
-
         if (TargetTimerLeft <= 0)
         {
-           // FindClosestTarget();
-            
-            TargetTimerLeft = TargetUpdateTimer;
+           FillTargetPosList();
+           
+           TargetTimerLeft = TargetUpdateTimer;
         }
-        
-        
-        if (fireAction.IsPressed())
-        {
-            Ballista.GetComponent<BallistaScript>().ShootProjectile(FindTargetBetterBetter());
-        }
-        
-        
-        
-        
-        
-        
-        
+        FireWeapons();
     }
 
-    void OnTriggerEnter(Collider other)
+    public void FireWeapons()
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        Vector3 Target = FindTargetBetterBetter();
+        //vector3.up is the value returned if there is no targets
+        if (ballistaScript.canFire() && Target != Vector3.up)
         {
-            TargetPositions.Enqueue(other.gameObject.GetComponent<Transform>().position);
-            
-            print($"enqueued an object, queue has {TargetPositions.Count} length");
+            ballistaScript.ShootProjectile(Target);    
         }
     }
+
+    public void FetchInfo()
+    {
+       ballistaScript = Ballista.GetComponent<BallistaScript>();
+    }
+
     public Vector3 FindTargetBetterBetter()
     {
         //get first enemy in list, its probably the closest to the tower
         if (WaveManagerScript.Instance.enemyList.Count != 0)
         {
-
-            Vector3 TargetDirection = FindClosestTarget() - Ballista.transform.position;
+            Vector3 TargetDirection = TargetPositions.Dequeue() - Ballista.transform.position;
+           //for debuggin --- Debug.DrawRay(Ballista.transform.position, TargetDirection, Color.blue);
             return TargetDirection;    
         }
         return Vector3.up; //idk man i would rather return nothing here ??
     }
-
-    public Vector3 FindClosestTarget()
-    {
-        
-        Vector3 closestVector = new Vector3(1000, 1000, 1000);
-        foreach (var angel in WaveManagerScript.Instance.enemyList)
-        {
-            if (angel != null)
-            {
-                if (angel.transform.position.magnitude < closestVector.magnitude)
-                {
-                    closestVector = angel.transform.position;
-                    Debug.DrawRay(this.transform.position, closestVector, Color.red);
-                    print(closestVector);
-                }
-            }
-        }
-        
-        
-
-        return closestVector;
-    }
-
     public void FillTargetPosList()
     {
+        TargetPositions.Clear();
+        TargetPos.Clear();
         foreach (var angel in WaveManagerScript.Instance.enemyList)
         {
-            
+            if (angel != null) TargetPos.Add(angel.transform.position);
         }
         
-        
         TargetPos.Sort(new MagnitudeComparison());
-        
+        foreach (var pos in TargetPos)
+        {
+            TargetPositions.Enqueue(pos);
+        }
     }
     
     

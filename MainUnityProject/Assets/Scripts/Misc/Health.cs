@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -37,19 +38,13 @@ public class Health : MonoBehaviour
 
     IEnumerator StartDeathProcess()
     {
-        //particle stuff here
+       print("GAME OVER");
         
         
-        //check if this is tower or angels
+        
         yield return new WaitForSeconds(despawnTimer); // maybe switch despawn timer for when particles are done playing
-        Destroy(this.gameObject);
+        
     }
+
     
-    
-    
-
-
-
-
-
 }

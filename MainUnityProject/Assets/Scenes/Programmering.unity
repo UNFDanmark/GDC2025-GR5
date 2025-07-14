@@ -159,7 +159,7 @@ MonoBehaviour:
   atkSpeedIncreaseAmount: 0
   critDamageMultIncreaseAmount: 0
   critChanceIncreaseAmount: 0
-  queueCooldown: 1
+  atkCooldown: 0.05
 --- !u!4 &13458398
 Transform:
   m_ObjectHideFlags: 0
@@ -169,7 +169,7 @@ Transform:
   m_GameObject: {fileID: 13458396}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -48.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -323,7 +323,7 @@ MonoBehaviour:
   atkSpeedIncreaseAmount: 0
   critDamageMultIncreaseAmount: 0
   critChanceIncreaseAmount: 0
-  queueCooldown: 0
+  atkCooldown: 0
 --- !u!4 &161544803
 Transform:
   m_ObjectHideFlags: 0
@@ -932,7 +932,7 @@ MonoBehaviour:
   atkSpeedIncreaseAmount: 0
   critDamageMultIncreaseAmount: 0
   critChanceIncreaseAmount: 0
-  queueCooldown: 0
+  atkCooldown: 0
 --- !u!4 &717172659
 Transform:
   m_ObjectHideFlags: 0
@@ -1026,10 +1026,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279dc0735512892458dd5c0450fac806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSpawningWave: 0
   enemyList: []
   difficulties:
   - difficultyName: tutorial
-    amountOfEnemiesToSpawn: 2000
+    amountOfEnemiesToSpawn: 200
     useWaveTimer: 1
     waveTimeLength: 5
     spawnerCooldown: 4.5
@@ -1073,7 +1074,6 @@ GameObject:
   m_Component:
   - component: {fileID: 856172727}
   - component: {fileID: 856172728}
-  - component: {fileID: 856172729}
   m_Layer: 0
   m_Name: WeaponManager
   m_TagString: Untagged
@@ -1108,47 +1108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03708ebc1dc08424599dbf6d5dc4fdc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireAction:
-    m_Name: Fire
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: e6c8ad07-aafa-47ca-8605-f831b6e082a0
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: db7ea207-a828-47ba-97f8-40c10c23297d
-      m_Path: <Keyboard>/f
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Fire
-      m_Flags: 0
-    m_Flags: 0
   Ballista: {fileID: 13458396}
   Canon: {fileID: 0}
   Catapult: {fileID: 0}
---- !u!135 &856172729
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856172726}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 380
-  m_Center: {x: 0, y: 0, z: 0}
+  TargetPos: []
+  TargetUpdateTimer: 1
 --- !u!1 &1437139425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,6 +1145,7 @@ Transform:
   - {fileID: 671274054}
   - {fileID: 856172727}
   - {fileID: 845517162}
+  - {fileID: 1979869186}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1649851111 stripped
@@ -1222,6 +1187,51 @@ Transform:
   - {fileID: 161544803}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1979869185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1979869186}
+  - component: {fileID: 1979869187}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1979869186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979869185}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1437139426}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1979869187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979869185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc3442ad6086634a80dc07da5852c31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: 0
 --- !u!1 &2007867078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,6 +1244,7 @@ GameObject:
   - component: {fileID: 2007867081}
   - component: {fileID: 2007867080}
   - component: {fileID: 2007867079}
+  - component: {fileID: 2007867083}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Tower
@@ -1334,6 +1345,21 @@ Transform:
   - {fileID: 155078722}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2007867083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007867078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 767eb7eeef246da459d70428568eeb17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 0
+  maxHealth: 0
+  despawnTimer: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

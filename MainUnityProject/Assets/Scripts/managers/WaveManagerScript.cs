@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class WaveManagerScript : MonoBehaviour
 {
-    public static WaveManagerScript Instance;   
+    public static WaveManagerScript Instance;
+    public bool isSpawningWave = false;
     private void Awake()
     {
         if (Instance == null)
@@ -39,8 +40,12 @@ public class WaveManagerScript : MonoBehaviour
     [ContextMenu("SpawnWave testing")]
     public void SpawnWave()
     {
-        DifficultySettings difficulty = DifficultySelector();
-        StartCoroutine(SpawningProcess(difficulty));
+        if (!isSpawningWave)
+        {
+            DifficultySettings difficulty = DifficultySelector();
+            StartCoroutine(SpawningProcess(difficulty));
+            isSpawningWave = true;    
+        }
     }
 
     IEnumerator SpawningProcess(DifficultySettings difficulty)
@@ -92,6 +97,9 @@ public class WaveManagerScript : MonoBehaviour
         }
         print($"Spawning process done, spawned {enemiesSpawned} out of {difficulty.amountOfEnemiesToSpawn} enemies");
         ChangeDifficulty();
+        GameManagerScript.Instance.SetGameState(GameState.Wave);
+        isSpawningWave = false;
+        
     }
     
 
@@ -121,6 +129,19 @@ public class WaveManagerScript : MonoBehaviour
     {
         print($"Increasing difficulty from {currentDifficulty} to {newValue} ");        
         currentDifficulty = newValue;
+    }
+
+    void Update()
+    {
+        WaveEndCheck();
+    }
+
+    public void WaveEndCheck()
+    {
+        if (GameManagerScript.Instance.gameState == GameState.Wave && enemyList.Count == 0)
+        {
+            GameManagerScript.Instance.SetGameState(GameState.TabletShop);
+        }
     }
 
 

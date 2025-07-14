@@ -10,7 +10,7 @@ public class ProjectileScript : MonoBehaviour
     public float critDamageMult;
     public float critChance;
 
-    float deathTimer = 5f;
+    float deathTimer = 3f;
 
     public void GetStatsFromWeapon(Weapon weapon)
     {
@@ -29,7 +29,7 @@ public class ProjectileScript : MonoBehaviour
     void Update()
     {
         deathTimer -= Time.deltaTime;
-
+        
         if (deathTimer <= 0)
         {
             KillSelf();
