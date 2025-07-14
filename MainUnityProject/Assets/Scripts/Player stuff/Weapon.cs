@@ -26,7 +26,7 @@ public class Weapon : MonoBehaviour
     public float critDamageMultIncreaseAmount;
     public float critChanceIncreaseAmount;
     
-
+    [Header("other stuff")]
     //other variables and references
     float cooldownleft;
     [SerializeField]float atkCooldown;
