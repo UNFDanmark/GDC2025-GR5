@@ -64,7 +64,7 @@ public class AngelScript : MonoBehaviour
         //particle stuff here
         
         
-        //check if this is tower or angels
+       
         yield return new WaitForSeconds(despawnTimer); // maybe switch despawn timer for when particles are done playing
         Destroy(this.gameObject);
     }
