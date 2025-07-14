@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,9 +12,12 @@ public class WeaponManagerScript : MonoBehaviour
     public GameObject Canon;
     public GameObject Catapult;
 
+    
+
     void Start()
     {
         fireAction.Enable();
+       
     }
 
     void Update()
@@ -22,4 +27,10 @@ public class WeaponManagerScript : MonoBehaviour
             Ballista.GetComponent<BallistaScript>().ShootProjectile();
         }
     }
+    
+    
+    
+    
+    
+    
 }
