@@ -13,6 +13,7 @@ public class ButtonScript : MonoBehaviour
 
     void Start()
     {
+        ChangeText();
         button = GetComponent<Button>();
         button.onClick.AddListener(MinFunktion);
     }
@@ -25,6 +26,7 @@ public class ButtonScript : MonoBehaviour
     void MinFunktion()
     {
         GameManagerScript.Instance.UpgradeWeapon(wType, sType);
+        ChangeText();
     }
 
 
@@ -55,17 +57,37 @@ public class ButtonScript : MonoBehaviour
             {
                 if (sType == StatType.attackDamage)
                 {
-                    childText.text =  WeaponManagerScript.Instance.Canon.GetComponent<BallistaScript>().attackDamage.ToString();          
+                    childText.text =  WeaponManagerScript.Instance.Canon.GetComponent<CanonScript>().attackDamage.ToString();          
                 }
 
                 if (sType == StatType.attackSpeed)
                 {
-                    childText.text =  WeaponManagerScript.Instance.Canon.GetComponent<BallistaScript>().attackSpeed.ToString();
+                    childText.text =  WeaponManagerScript.Instance.Canon.GetComponent<CanonScript>().attackSpeed.ToString();
                 }
 
                 if (sType == StatType.projectileSpeed)
                 {
-                    childText.text =  WeaponManagerScript.Instance.Canon.GetComponent<BallistaScript>().projectileSpeed.ToString();
+                    childText.text =  WeaponManagerScript.Instance.Canon.GetComponent<CanonScript>().projectileSpeed.ToString();
+                }
+
+                break;
+            }
+            
+            case WeaponType.Catapult:
+            {
+                if (sType == StatType.attackDamage)
+                {
+                    childText.text =  WeaponManagerScript.Instance.Catapult.GetComponent<CatapultScript>().attackDamage.ToString();          
+                }
+
+                if (sType == StatType.attackSpeed)
+                {
+                    childText.text =  WeaponManagerScript.Instance.Catapult.GetComponent<CatapultScript>().attackSpeed.ToString();
+                }
+
+                if (sType == StatType.projectileSpeed)
+                {
+                    childText.text =  WeaponManagerScript.Instance.Catapult.GetComponent<CatapultScript>().projectileSpeed.ToString();
                 }
 
                 break;
