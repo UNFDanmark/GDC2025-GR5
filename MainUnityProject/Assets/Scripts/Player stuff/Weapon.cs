@@ -40,6 +40,7 @@ public class Weapon : MonoBehaviour
     //other variables and references
     float cooldownleft;
     [SerializeField]float atkCooldown;
+    public List<GameObject> layoutObjects = new List<GameObject>();
     
     public void UpgradeStat(StatType statType, int currentMoney)
     {
@@ -130,8 +131,20 @@ public class Weapon : MonoBehaviour
         return false;
     }
 
+    public void ChangeText()
+    {
+        
+    }
+
     void Update()
     {
         cooldownleft -= Time.deltaTime;
+    }
+
+    void Start()
+    {
+        
+        
+        ChangeText();
     }
 }

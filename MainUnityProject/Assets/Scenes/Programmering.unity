@@ -155,16 +155,17 @@ MonoBehaviour:
   attackSpeed: 1
   critDamageMult: 1
   critChance: 1
-  atkDamageIncreaseAmount: 0
+  atkDamageIncreaseAmount: 9
   atkSpeedIncreaseAmount: 0
   projectileSpeedIncreaseAmount: 0
-  atkDamageCost: 0
+  atkDamageCost: 10
   atkSpeedCost: 0
   projectileSpeedCost: 0
-  atkDamageCostIncrease: 0
+  atkDamageCostIncrease: 100
   atkSpeedCostIncrease: 0
   projectileSpeedCostIncrease: 0
   atkCooldown: 0.05
+  layoutObjects: []
 --- !u!4 &13458398
 Transform:
   m_ObjectHideFlags: 0
@@ -329,6 +330,7 @@ MonoBehaviour:
   atkSpeedCostIncrease: 0
   projectileSpeedCostIncrease: 0
   atkCooldown: 0
+  layoutObjects: []
 --- !u!4 &161544803
 Transform:
   m_ObjectHideFlags: 0
@@ -910,6 +912,7 @@ MonoBehaviour:
   atkSpeedCostIncrease: 0
   projectileSpeedCostIncrease: 0
   atkCooldown: 0
+  layoutObjects: []
 --- !u!4 &717172659
 Transform:
   m_ObjectHideFlags: 0
@@ -1363,7 +1366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
-  money: 0
+  money: 80
 --- !u!1 &2007867078
 GameObject:
   m_ObjectHideFlags: 0
