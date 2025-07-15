@@ -46,19 +46,29 @@ public class Weapon : MonoBehaviour
         switch (statType)
         {
             case StatType.attackDamage:
-                if (CheckMoney(currentMoney, atkDamageCost)) attackDamage += atkDamageIncreaseAmount;
-                IncreaseCostForUpgrade(statType);
-                GameManagerScript.Instance.DecreaseMoneyAmount(atkDamageCost);
+                if (CheckMoney(currentMoney, atkDamageCost))
+                {
+                    attackDamage += atkDamageIncreaseAmount;
+                    IncreaseCostForUpgrade(statType);
+                    GameManagerScript.Instance.DecreaseMoneyAmount(atkDamageCost);
+                }
                 break;
             case StatType.attackSpeed:
-                if (CheckMoney(currentMoney, atkSpeedCost)) attackSpeed += atkSpeedIncreaseAmount;
-                GameManagerScript.Instance.DecreaseMoneyAmount(atkSpeedCost);
-                IncreaseCostForUpgrade(statType);
+                if (CheckMoney(currentMoney, atkSpeedCost))
+                {
+                    attackSpeed += atkSpeedIncreaseAmount;
+                    GameManagerScript.Instance.DecreaseMoneyAmount(atkSpeedCost);
+                    IncreaseCostForUpgrade(statType);
+                }
                 break;
             case StatType.projectileSpeed:
-                if (CheckMoney(currentMoney, projectileSpeedCost)) projectileSpeed += projectileSpeedIncreaseAmount;
-                GameManagerScript.Instance.DecreaseMoneyAmount(projectileSpeedCost);
-                IncreaseCostForUpgrade(statType);
+                if (CheckMoney(currentMoney, projectileSpeedCost))
+                {
+                    projectileSpeed += projectileSpeedIncreaseAmount;
+                    GameManagerScript.Instance.DecreaseMoneyAmount(projectileSpeedCost);
+                    IncreaseCostForUpgrade(statType);
+                }
+                
                 break;
             default:
                 Debug.Log("No stat could be upgraded");
