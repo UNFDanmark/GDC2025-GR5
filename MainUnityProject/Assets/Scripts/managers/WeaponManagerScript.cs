@@ -17,6 +17,8 @@ public class WeaponManagerScript : MonoBehaviour
     float TargetTimerLeft;
     //Weapon scripts
     BallistaScript ballistaScript;
+    CanonScript canonScript;
+    CatapultScript catapultScript;
     
 
     void Start()
@@ -51,6 +53,7 @@ public class WeaponManagerScript : MonoBehaviour
     public void FetchInfo()
     {
        ballistaScript = Ballista.GetComponent<BallistaScript>();
+       catapultScript = cata
     }
 
     public Vector3 FindTargetBetterBetter()

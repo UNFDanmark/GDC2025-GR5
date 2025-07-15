@@ -1207,8 +1207,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ballista: {fileID: 13458396}
-  Canon: {fileID: 0}
-  Catapult: {fileID: 0}
+  Canon: {fileID: 717172657}
+  Catapult: {fileID: 161544801}
   TargetPos: []
   TargetUpdateTimer: 1
 --- !u!1 &1437139425
