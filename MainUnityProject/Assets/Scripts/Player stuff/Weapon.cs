@@ -34,8 +34,8 @@ public class Weapon : MonoBehaviour
     public int projectileSpeedCostIncrease;
     [Header("other stuff")]
     //other variables and references
-    float cooldownleft;
-    [SerializeField]float atkCooldown;
+    public float cooldownleft;
+    public float atkCooldown;
     
     public void UpgradeStat(StatType statType, int currentMoney)
     {

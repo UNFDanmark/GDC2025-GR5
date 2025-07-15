@@ -21,6 +21,7 @@ public class WeaponManagerScript : MonoBehaviour
     BallistaScript ballistaScript;
     CanonScript canonScript;
     CatapultScript catapultScript;
+    CatapultShootScript catapultShootScript;
 
 
     public static WeaponManagerScript Instance;
@@ -63,18 +64,25 @@ public class WeaponManagerScript : MonoBehaviour
 
     public void FireWeapons()
     {
-        Vector3 Target = FindTargetBallista();
+        Vector3 target = FindTargetBallista();
         //vector3.up is the value returned if there is no targets
-        if (ballistaScript.canFire() && Target != Vector3.up)
+        if (ballistaScript.canFire() && target != Vector3.up)
         {
-            ballistaScript.ShootProjectile(Target);    
+            ballistaScript.ShootProjectile(target);    
         }
 
-        Target = FindTargetCanon();
-        if (canonScript.canFire() && Target != Vector3.up)
+        target = FindTargetCanon();
+        if (canonScript.canFire() && target != Vector3.up)
         {
-            canonScript.ShootProjectile(Target);
+            canonScript.ShootProjectile(target);
         }
+
+        if (catapultScript.canFire() && target != Vector3.up)
+        {
+            catapultShootScript.ShootCatapult(catapultScript, target);
+        }
+        
+        
     }
 
     public void FetchInfo()
@@ -82,6 +90,7 @@ public class WeaponManagerScript : MonoBehaviour
        ballistaScript = Ballista.GetComponent<BallistaScript>();
        catapultScript = Catapult.GetComponent<CatapultScript>();
        canonScript = Canon.GetComponent<CanonScript>();
+       catapultShootScript = Catapult.GetComponentInChildren<CatapultShootScript>();
     }
 
     public Vector3 FindTargetBallista()
