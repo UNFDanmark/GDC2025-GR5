@@ -63,13 +63,14 @@ public class WeaponManagerScript : MonoBehaviour
 
     public void FireWeapons()
     {
-        Vector3 Target = FindTargetBetterBetter();
+        Vector3 Target = FindTargetBallista();
         //vector3.up is the value returned if there is no targets
         if (ballistaScript.canFire() && Target != Vector3.up)
         {
             ballistaScript.ShootProjectile(Target);    
         }
 
+        Target = FindTargetCanon();
         if (canonScript.canFire() && Target != Vector3.up)
         {
             canonScript.ShootProjectile(Target);
@@ -83,30 +84,33 @@ public class WeaponManagerScript : MonoBehaviour
        canonScript = Canon.GetComponent<CanonScript>();
     }
 
-    public Vector3 FindTargetBetterBetter(int i)
+    public Vector3 FindTargetBallista()
     {
         //get first enemy in list, its probably the closest to the tower
         if (WaveManagerScript.Instance.enemyList.Count != 0)
         {
             if (TargetPositions.TryDequeue(out Vector3 targetPos))
             {
-                if (i == 1)
-                {
-                    Vector3 TargetDirection = targetPos  - Ballista.transform.position;
-                    //for debuggin --- Debug.DrawRay(Ballista.transform.position, TargetDirection, Color.blue);
-                    return TargetDirection;    
-                }
-
-                if (i == 2)
-                {
-                    Vector3 TargetDirection = targetPos  - Canon.transform.position;
-                    //for debuggin --- Debug.DrawRay(Ballista.transform.position, TargetDirection, Color.blue);
-                    return TargetDirection;
-                }
+                Vector3 TargetDirection = targetPos  - Ballista.transform.position;
+                //for debuggin --- Debug.DrawRay(Ballista.transform.position, TargetDirection, Color.blue);
+                return TargetDirection;    
                 
             }
         }
         return Vector3.up; //idk man i would rather return nothing here ??
+    }
+
+    public Vector3 FindTargetCanon()
+    {
+        if (TargetPositions.TryDequeue(out Vector3 targetPos))
+        {
+            Vector3 TargetDirection = targetPos  - Canon.transform.position;
+            //for debuggin --- Debug.DrawRay(Ballista.transform.position, TargetDirection, Color.blue);
+            return TargetDirection;
+        }
+        
+        return Vector3.up;
+       
     }
     public void FillTargetPosList()
     {

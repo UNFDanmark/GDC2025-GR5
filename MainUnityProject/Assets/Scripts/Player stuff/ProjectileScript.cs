@@ -9,6 +9,10 @@ public class ProjectileScript : MonoBehaviour
     public float attackSpeed;
     public float critDamageMult;
     public float critChance;
+    public bool isCanonBall;
+    public bool hasDeathTouch;
+    public int killCounter;
+    int maxKillsAllowed = 5; //is only set in code
 
     float deathTimer = 3f;
 
@@ -23,6 +27,7 @@ public class ProjectileScript : MonoBehaviour
 
     public void KillSelf()
     {
+        
         Destroy(this.gameObject);
     }
 
@@ -32,6 +37,17 @@ public class ProjectileScript : MonoBehaviour
         deathTimer -= Time.deltaTime;
         
         if (deathTimer <= 0)
+        {
+            KillSelf();
+        }
+    }
+
+    public void AddKill()
+    {
+        
+        killCounter++;
+
+        if (killCounter >= maxKillsAllowed)
         {
             KillSelf();
         }

@@ -90,12 +90,18 @@ public class AngelScript : MonoBehaviour
 
     public void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Projectile"))
+        if (other.gameObject.CompareTag("Arrow"))
         {
             ProjectileScript projectileScript = other.gameObject.GetComponent<ProjectileScript>();
             TakeDamage(projectileScript.attackDamage);
             projectileScript.KillSelf();
-        } 
+        } else if (other.gameObject.CompareTag("CanonBall"))
+        {
+            ProjectileScript projectileScript = other.gameObject.GetComponent<ProjectileScript>();
+            TakeDamage(projectileScript.attackDamage);
+            projectileScript.AddKill(); //also kills canonball if above threshold of kills
+           
+        }
     }
 
     void OnTriggerEnter(Collider other)
