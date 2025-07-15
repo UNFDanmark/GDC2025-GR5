@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 
 [System.Serializable]
 
-public enum StatType {attackDamage, attackSpeed, critDamageMult, Critchance}
+public enum StatType {attackDamage, attackSpeed, projectileSpeed}
 public enum WeaponType {Ballista, Canon, Catapult}
 
 public class Weapon : MonoBehaviour
@@ -23,35 +23,46 @@ public class Weapon : MonoBehaviour
     [Header("Increase amounts for stats")]
     public int atkDamageIncreaseAmount;
     public float atkSpeedIncreaseAmount;
-    public float critDamageMultIncreaseAmount;
-    public float critChanceIncreaseAmount;
+    public float projectileSpeedIncreaseAmount;
+    [Header("Upgrade cost")]
+    public int atkDamageCost;
+    public int atkSpeedCost;
+    public int projectileSpeedCost;
+    [Header("Upgrade Cost Increase")]
+    public int atkDamageCostIncrease;
+    public int atkSpeedCostIncrease;
+    public int projectileSpeedCostIncrease;
+ 
+    
+    
     
     [Header("other stuff")]
     //other variables and references
     float cooldownleft;
     [SerializeField]float atkCooldown;
     
-    public void UpgradeStat(StatType statType)
+    public void UpgradeStat(StatType statType, int currentMoney)
     {
         switch (statType)
         {
             case StatType.attackDamage:
-                attackDamage += atkDamageIncreaseAmount;
+                if (CheckMoney(currentMoney, atkDamageCost)) attackDamage += atkDamageIncreaseAmount;
+                IncreaseCostForUpgrade(statType);
                 break;
             case StatType.attackSpeed:
-                attackSpeed += atkSpeedIncreaseAmount;
+                if (CheckMoney(currentMoney, atkSpeedCost)) attackSpeed += atkSpeedIncreaseAmount;
+                IncreaseCostForUpgrade(statType);
                 break;
-            case StatType.critDamageMult:
-                critDamageMult += critDamageMultIncreaseAmount;
-                break;
-            case StatType.Critchance:
-                critChance += critChanceIncreaseAmount;
+            case StatType.projectileSpeed:
+                if (CheckMoney(currentMoney, projectileSpeedCost)) projectileSpeed += projectileSpeedIncreaseAmount;
+                IncreaseCostForUpgrade(statType);
                 break;
             default:
                 Debug.Log("No stat could be upgraded");
                 break;
-
+        
         }
+        
     }
     [ContextMenu("FireBullet")]
     public void ShootProjectile(Vector3 targetDirection)
@@ -74,6 +85,36 @@ public class Weapon : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void IncreaseCostForUpgrade(StatType sType)
+    {
+        switch (sType)
+        {
+            case StatType.attackDamage:
+                atkDamageCost += atkDamageCostIncrease;
+                break;
+            case StatType.attackSpeed:
+                atkSpeedCost += atkSpeedCostIncrease;
+                break;
+            case StatType.projectileSpeed:
+                projectileSpeedCost += projectileSpeedCostIncrease;
+                break;
+            default:
+                Debug.Log("No stat upgrade cost could be increased");
+                break;
+                
+        }
+    }
+
+    public bool CheckMoney(int currentMoney, int upgradeCost)
+    {
+        if (currentMoney >= upgradeCost)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     void Update()

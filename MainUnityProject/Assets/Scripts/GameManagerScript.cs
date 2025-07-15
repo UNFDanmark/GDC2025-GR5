@@ -73,7 +73,21 @@ public class GameManagerScript : MonoBehaviour
     // buttons and UI ----------------------------------------------------------------------------
 
 
-
+    public void UpgradeWeapon(WeaponType wType, StatType sType)
+    {
+        switch (wType)
+        {
+            case WeaponType.Ballista:
+                WeaponManagerScript.Instance.UpgradeBallista(sType, money);
+                break;
+            case WeaponType.Canon:
+                WeaponManagerScript.Instance.UpgradeCanon(sType, money);
+                break;
+            case WeaponType.Catapult:
+                WeaponManagerScript.Instance.UpgradeCatapult(sType, money);
+                break;
+        }
+    }
 
 
 }

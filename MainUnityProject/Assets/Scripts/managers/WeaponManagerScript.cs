@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class WeaponManagerScript : MonoBehaviour
 {
+    
+    
     //weapon objects
     public GameObject Ballista;
     public GameObject Canon;
@@ -19,8 +21,27 @@ public class WeaponManagerScript : MonoBehaviour
     BallistaScript ballistaScript;
     CanonScript canonScript;
     CatapultScript catapultScript;
-    
 
+
+    public static WeaponManagerScript Instance;
+
+    void Awake()
+    {
+        
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(Instance);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        
+       
+    }
+    
+    
     void Start()
     {
         FetchInfo();
@@ -53,7 +74,8 @@ public class WeaponManagerScript : MonoBehaviour
     public void FetchInfo()
     {
        ballistaScript = Ballista.GetComponent<BallistaScript>();
-       catapultScript = cata
+       catapultScript = Catapult.GetComponent<CatapultScript>();
+       canonScript = Canon.GetComponent<CanonScript>();
     }
 
     public Vector3 FindTargetBetterBetter()
@@ -90,18 +112,21 @@ public class WeaponManagerScript : MonoBehaviour
     
     // upgrade weapons
 
-    public void UpgradeBallista(StatType stat)
+    public void UpgradeBallista(StatType stat, int _currentMoney)
     {
-        ballistaScript.UpgradeStat(stat);
+        
+        ballistaScript.UpgradeStat(stat, _currentMoney);
     }
-    public void UpgradeCanon(StatType stat)
+    public void UpgradeCanon(StatType stat, int _currentMoney)
     {
-        ballistaScript.UpgradeStat(stat);
+        canonScript.UpgradeStat(stat, _currentMoney);
     }
-    public void UpgradeCatapult(StatType stat)
+    public void UpgradeCatapult(StatType stat, int _currentMoney)
     {
-        ballistaScript.UpgradeStat(stat);
+        catapultScript.UpgradeStat(stat, _currentMoney);
     }
+
+    
     
 }
 
