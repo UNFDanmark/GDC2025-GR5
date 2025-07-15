@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - CanonBall
   - Arrow
+  - Rock
   layers:
   - Default
   - TransparentFX

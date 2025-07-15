@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour
 {
+    Rigidbody rb;
     public WeaponType weaponType;
     public float projectileSpeed;
     public int attackDamage;
@@ -10,11 +11,18 @@ public class ProjectileScript : MonoBehaviour
     public float critDamageMult;
     public float critChance;
     public bool isCanonBall;
+    public bool isRock;
     public bool hasDeathTouch;
     public int killCounter;
     int maxKillsAllowed = 5; //is only set in code
+    public float dragForce;
 
     float deathTimer = 3f;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     public void GetStatsFromWeapon(Weapon weapon)
     {
@@ -40,6 +48,8 @@ public class ProjectileScript : MonoBehaviour
         {
             KillSelf();
         }
+
+        DragDown();
     }
 
     public void AddKill()
@@ -50,6 +60,14 @@ public class ProjectileScript : MonoBehaviour
         if (killCounter >= maxKillsAllowed)
         {
             KillSelf();
+        }
+    }
+
+    public void DragDown()
+    {
+        if (isRock)
+        {
+            rb.AddForce(Vector3.down * dragForce);
         }
     }
 }

@@ -101,6 +101,10 @@ public class AngelScript : MonoBehaviour
             TakeDamage(projectileScript.attackDamage);
             projectileScript.AddKill(); //also kills canonball if above threshold of kills
            
+        } else if (other.gameObject.CompareTag("Rock"))
+        {
+            ProjectileScript projectileScript = other.gameObject.GetComponent<ProjectileScript>();
+            TakeDamage(projectileScript.attackDamage);
         }
     }
 
