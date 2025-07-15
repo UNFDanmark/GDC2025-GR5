@@ -53,6 +53,7 @@ public class Weapon : MonoBehaviour
                 if (CheckMoney(currentMoney, atkSpeedCost))
                 {
                     attackSpeed += atkSpeedIncreaseAmount;
+                    atkCooldown = atkCooldown / attackSpeed;
                     GameManagerScript.Instance.DecreaseMoneyAmount(atkSpeedCost);
                     IncreaseCostForUpgrade(statType);
                 }
