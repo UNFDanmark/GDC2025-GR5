@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class WeaponManagerScript : MonoBehaviour
 {
+    
+    
     //weapon objects
     public GameObject Ballista;
     public GameObject Canon;
@@ -17,8 +19,29 @@ public class WeaponManagerScript : MonoBehaviour
     float TargetTimerLeft;
     //Weapon scripts
     BallistaScript ballistaScript;
-    
+    CanonScript canonScript;
+    CatapultScript catapultScript;
 
+
+    public static WeaponManagerScript Instance;
+
+    void Awake()
+    {
+        
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(Instance);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        
+       
+    }
+    
+    
     void Start()
     {
         FetchInfo();
@@ -51,6 +74,8 @@ public class WeaponManagerScript : MonoBehaviour
     public void FetchInfo()
     {
        ballistaScript = Ballista.GetComponent<BallistaScript>();
+       catapultScript = Catapult.GetComponent<CatapultScript>();
+       canonScript = Canon.GetComponent<CanonScript>();
     }
 
     public Vector3 FindTargetBetterBetter()
@@ -58,9 +83,13 @@ public class WeaponManagerScript : MonoBehaviour
         //get first enemy in list, its probably the closest to the tower
         if (WaveManagerScript.Instance.enemyList.Count != 0)
         {
-            Vector3 TargetDirection = TargetPositions.Dequeue() - Ballista.transform.position;
-           //for debuggin --- Debug.DrawRay(Ballista.transform.position, TargetDirection, Color.blue);
-            return TargetDirection;    
+            if (TargetPositions.TryDequeue(out Vector3 targetPos))
+            {
+                
+                Vector3 TargetDirection = targetPos  - Ballista.transform.position;
+               //for debuggin --- Debug.DrawRay(Ballista.transform.position, TargetDirection, Color.blue);
+                return TargetDirection;
+            }
         }
         return Vector3.up; //idk man i would rather return nothing here ??
     }
@@ -79,6 +108,24 @@ public class WeaponManagerScript : MonoBehaviour
             TargetPositions.Enqueue(pos);
         }
     }
+    
+    
+    // upgrade weapons
+
+    public void UpgradeBallista(StatType stat, int _currentMoney)
+    {
+        
+        ballistaScript.UpgradeStat(stat, _currentMoney);
+    }
+    public void UpgradeCanon(StatType stat, int _currentMoney)
+    {
+        canonScript.UpgradeStat(stat, _currentMoney);
+    }
+    public void UpgradeCatapult(StatType stat, int _currentMoney)
+    {
+        catapultScript.UpgradeStat(stat, _currentMoney);
+    }
+
     
     
 }
