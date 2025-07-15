@@ -32,15 +32,10 @@ public class Weapon : MonoBehaviour
     public int atkDamageCostIncrease;
     public int atkSpeedCostIncrease;
     public int projectileSpeedCostIncrease;
- 
-    
-    
-    
     [Header("other stuff")]
     //other variables and references
     float cooldownleft;
     [SerializeField]float atkCooldown;
-    public List<GameObject> layoutObjects = new List<GameObject>();
     
     public void UpgradeStat(StatType statType, int currentMoney)
     {
@@ -117,7 +112,6 @@ public class Weapon : MonoBehaviour
             default:
                 Debug.Log("No stat upgrade cost could be increased");
                 break;
-                
         }
     }
 
@@ -130,21 +124,9 @@ public class Weapon : MonoBehaviour
 
         return false;
     }
-
-    public void ChangeText()
-    {
-        
-    }
-
     void Update()
     {
         cooldownleft -= Time.deltaTime;
     }
 
-    void Start()
-    {
-        
-        
-        ChangeText();
-    }
 }
