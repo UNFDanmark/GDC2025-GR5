@@ -85,6 +85,21 @@ public class WeaponManagerScript : MonoBehaviour
     }
     
     
+    // upgrade weapons
+
+    public void UpgradeBallista(StatType stat)
+    {
+        ballistaScript.UpgradeStat(stat);
+    }
+    public void UpgradeCanon(StatType stat)
+    {
+        ballistaScript.UpgradeStat(stat);
+    }
+    public void UpgradeCatapult(StatType stat)
+    {
+        ballistaScript.UpgradeStat(stat);
+    }
+    
 }
 
 public class MagnitudeComparison : IComparer<Vector3>

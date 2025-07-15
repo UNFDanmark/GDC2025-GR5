@@ -69,6 +69,9 @@ public class GameManagerScript : MonoBehaviour
             money -= amount;
         }
     }
+    
+    // buttons and UI ----------------------------------------------------------------------------
+
 
 
 
