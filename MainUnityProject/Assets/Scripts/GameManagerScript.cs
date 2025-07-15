@@ -22,7 +22,7 @@ public class GameManagerScript : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        SetGameState(GameState.SpawningWave);
+        SetGameState(GameState.SpawningWave); // for testing
     }
 
 

@@ -36,8 +36,7 @@ public class WaveManagerScript : MonoBehaviour
     [SerializeField] int currentWave;
 
     [SerializeField] GameObject enemySpawner;
-
-    [ContextMenu("SpawnWave testing")]
+    
     public void SpawnWave()
     {
         if (!isSpawningWave)

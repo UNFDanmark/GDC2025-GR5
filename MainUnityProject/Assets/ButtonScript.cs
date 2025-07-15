@@ -38,17 +38,20 @@ public class ButtonScript : MonoBehaviour
             {
                 if (sType == StatType.attackDamage)
                 {
-                    childText.text =  "Damage: " +  WeaponManagerScript.Instance.Ballista.GetComponent<BallistaScript>().attackDamage.ToString();          
+                    childText.text =  "Damage: " +  WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().attackDamage;
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().atkDamageCost;
                 }
 
                 if (sType == StatType.attackSpeed)
                 {
-                    childText.text = "FireRate: " + WeaponManagerScript.Instance.Ballista.GetComponent<BallistaScript>().attackSpeed.ToString();
+                    childText.text = "FireRate: " + WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().attackSpeed;
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().atkSpeedCost;
                 }
 
                 if (sType == StatType.projectileSpeed)
                 {
-                    childText.text =  "Arrow Speed: " + WeaponManagerScript.Instance.Ballista.GetComponent<BallistaScript>().projectileSpeed.ToString();
+                    childText.text =  "Arrow Speed: " + WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().projectileSpeed;
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().projectileSpeedCost;
                 }
 
                 break;
@@ -57,17 +60,20 @@ public class ButtonScript : MonoBehaviour
             {
                 if (sType == StatType.attackDamage)
                 {
-                    childText.text = "Damage: " + WeaponManagerScript.Instance.Canon.GetComponent<CanonScript>().attackDamage;          
+                    childText.text = "Damage: " + WeaponManagerScript.Instance.Canon.GetComponent<Weapon>().attackDamage;          
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Canon.GetComponent<Weapon>().atkDamageCost;
                 }
 
                 if (sType == StatType.attackSpeed)
                 {
-                    childText.text = "FireRate: " + WeaponManagerScript.Instance.Canon.GetComponent<CanonScript>().attackSpeed;
+                    childText.text = "FireRate: " + WeaponManagerScript.Instance.Canon.GetComponent<Weapon>().attackSpeed;
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Canon.GetComponent<Weapon>().atkSpeedCost;
                 }
 
                 if (sType == StatType.projectileSpeed)
                 {
-                    childText.text =  "Power: " + WeaponManagerScript.Instance.Canon.GetComponent<CanonScript>().projectileSpeed;
+                    childText.text =  "Power: " + WeaponManagerScript.Instance.Canon.GetComponent<Weapon>().projectileSpeed;
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Canon.GetComponent<Weapon>().projectileSpeedCost;
                 }
 
                 break;
@@ -77,17 +83,20 @@ public class ButtonScript : MonoBehaviour
             {
                 if (sType == StatType.attackDamage)
                 {
-                    childText.text = "Damage: " + WeaponManagerScript.Instance.Catapult.GetComponent<CatapultScript>().attackDamage.ToString();          
+                    childText.text = "Damage: " + WeaponManagerScript.Instance.Catapult.GetComponent<Weapon>().attackDamage;         
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Catapult.GetComponent<Weapon>().atkDamageCost;
                 }
 
                 if (sType == StatType.attackSpeed)
                 {
-                    childText.text = "FireRate: " + WeaponManagerScript.Instance.Catapult.GetComponent<CatapultScript>().attackSpeed.ToString();
+                    childText.text = "FireRate: " + WeaponManagerScript.Instance.Catapult.GetComponent<Weapon>().attackSpeed;
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Catapult.GetComponent<Weapon>().atkSpeedCost;
                 }
 
                 if (sType == StatType.projectileSpeed)
                 {
-                    childText.text =  "Power: " + WeaponManagerScript.Instance.Catapult.GetComponent<CatapultScript>().projectileSpeed.ToString();
+                    childText.text =  "Power: " + WeaponManagerScript.Instance.Catapult.GetComponent<Weapon>().projectileSpeed;
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Catapult.GetComponent<Weapon>().projectileSpeedCost;
                 }
 
                 break;
