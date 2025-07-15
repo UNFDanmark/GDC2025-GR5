@@ -58,9 +58,13 @@ public class WeaponManagerScript : MonoBehaviour
         //get first enemy in list, its probably the closest to the tower
         if (WaveManagerScript.Instance.enemyList.Count != 0)
         {
-            Vector3 TargetDirection = TargetPositions.Dequeue() - Ballista.transform.position;
-           //for debuggin --- Debug.DrawRay(Ballista.transform.position, TargetDirection, Color.blue);
-            return TargetDirection;    
+            if (TargetPositions.TryDequeue(out Vector3 targetPos))
+            {
+                
+                Vector3 TargetDirection = targetPos  - Ballista.transform.position;
+               //for debuggin --- Debug.DrawRay(Ballista.transform.position, TargetDirection, Color.blue);
+                return TargetDirection;
+            }
         }
         return Vector3.up; //idk man i would rather return nothing here ??
     }
