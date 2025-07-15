@@ -69,6 +69,11 @@ public class WeaponManagerScript : MonoBehaviour
         {
             ballistaScript.ShootProjectile(Target);    
         }
+
+        if (canonScript.canFire() && Target != Vector3.up)
+        {
+            canonScript.ShootProjectile(Target);
+        }
     }
 
     public void FetchInfo()
@@ -78,17 +83,27 @@ public class WeaponManagerScript : MonoBehaviour
        canonScript = Canon.GetComponent<CanonScript>();
     }
 
-    public Vector3 FindTargetBetterBetter()
+    public Vector3 FindTargetBetterBetter(int i)
     {
         //get first enemy in list, its probably the closest to the tower
         if (WaveManagerScript.Instance.enemyList.Count != 0)
         {
             if (TargetPositions.TryDequeue(out Vector3 targetPos))
             {
+                if (i == 1)
+                {
+                    Vector3 TargetDirection = targetPos  - Ballista.transform.position;
+                    //for debuggin --- Debug.DrawRay(Ballista.transform.position, TargetDirection, Color.blue);
+                    return TargetDirection;    
+                }
+
+                if (i == 2)
+                {
+                    Vector3 TargetDirection = targetPos  - Canon.transform.position;
+                    //for debuggin --- Debug.DrawRay(Ballista.transform.position, TargetDirection, Color.blue);
+                    return TargetDirection;
+                }
                 
-                Vector3 TargetDirection = targetPos  - Ballista.transform.position;
-               //for debuggin --- Debug.DrawRay(Ballista.transform.position, TargetDirection, Color.blue);
-                return TargetDirection;
             }
         }
         return Vector3.up; //idk man i would rather return nothing here ??
