@@ -38,17 +38,17 @@ public class ButtonScript : MonoBehaviour
             {
                 if (sType == StatType.attackDamage)
                 {
-                    childText.text =  WeaponManagerScript.Instance.Ballista.GetComponent<BallistaScript>().attackDamage.ToString();          
+                    childText.text =  "Damage: " +  WeaponManagerScript.Instance.Ballista.GetComponent<BallistaScript>().attackDamage.ToString();          
                 }
 
                 if (sType == StatType.attackSpeed)
                 {
-                    childText.text =  WeaponManagerScript.Instance.Ballista.GetComponent<BallistaScript>().attackSpeed.ToString();
+                    childText.text = "FireRate: " + WeaponManagerScript.Instance.Ballista.GetComponent<BallistaScript>().attackSpeed.ToString();
                 }
 
                 if (sType == StatType.projectileSpeed)
                 {
-                    childText.text =  WeaponManagerScript.Instance.Ballista.GetComponent<BallistaScript>().projectileSpeed.ToString();
+                    childText.text =  "Arrow Speed: " + WeaponManagerScript.Instance.Ballista.GetComponent<BallistaScript>().projectileSpeed.ToString();
                 }
 
                 break;
@@ -57,17 +57,17 @@ public class ButtonScript : MonoBehaviour
             {
                 if (sType == StatType.attackDamage)
                 {
-                    childText.text =  WeaponManagerScript.Instance.Canon.GetComponent<CanonScript>().attackDamage.ToString();          
+                    childText.text = "Damage: " + WeaponManagerScript.Instance.Canon.GetComponent<CanonScript>().attackDamage;          
                 }
 
                 if (sType == StatType.attackSpeed)
                 {
-                    childText.text =  WeaponManagerScript.Instance.Canon.GetComponent<CanonScript>().attackSpeed.ToString();
+                    childText.text = "FireRate: " + WeaponManagerScript.Instance.Canon.GetComponent<CanonScript>().attackSpeed;
                 }
 
                 if (sType == StatType.projectileSpeed)
                 {
-                    childText.text =  WeaponManagerScript.Instance.Canon.GetComponent<CanonScript>().projectileSpeed.ToString();
+                    childText.text =  "Power: " + WeaponManagerScript.Instance.Canon.GetComponent<CanonScript>().projectileSpeed;
                 }
 
                 break;
@@ -77,17 +77,17 @@ public class ButtonScript : MonoBehaviour
             {
                 if (sType == StatType.attackDamage)
                 {
-                    childText.text =  WeaponManagerScript.Instance.Catapult.GetComponent<CatapultScript>().attackDamage.ToString();          
+                    childText.text = "Damage: " + WeaponManagerScript.Instance.Catapult.GetComponent<CatapultScript>().attackDamage.ToString();          
                 }
 
                 if (sType == StatType.attackSpeed)
                 {
-                    childText.text =  WeaponManagerScript.Instance.Catapult.GetComponent<CatapultScript>().attackSpeed.ToString();
+                    childText.text = "FireRate: " + WeaponManagerScript.Instance.Catapult.GetComponent<CatapultScript>().attackSpeed.ToString();
                 }
 
                 if (sType == StatType.projectileSpeed)
                 {
-                    childText.text =  WeaponManagerScript.Instance.Catapult.GetComponent<CatapultScript>().projectileSpeed.ToString();
+                    childText.text =  "Power: " + WeaponManagerScript.Instance.Catapult.GetComponent<CatapultScript>().projectileSpeed.ToString();
                 }
 
                 break;
