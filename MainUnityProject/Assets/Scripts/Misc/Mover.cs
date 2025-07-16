@@ -32,7 +32,7 @@ public class Mover : MonoBehaviour
       Vector3 newVelocity = rb.linearVelocity;
       newVelocity = (target - transform.position) * speed;
       rb.linearVelocity = newVelocity;
-      
+      transform.LookAt(newVelocity);
    }
 
    

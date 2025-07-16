@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 
@@ -9,6 +10,8 @@ public enum GameState {Menu, Tutorial, SpawningWave, Wave, TabletShop, GameOver}
 public class GameManagerScript : MonoBehaviour
 {
     public Health healthScript;
+    public Button pauseButton;
+    
     
     public GameObject leftPoint;
     public GameObject middlePoint;
@@ -77,6 +80,9 @@ public class GameManagerScript : MonoBehaviour
 
     void Update()
     {
+        
+        
+        
         UpdateTextUI();    
         switch (gameState)
         {
@@ -102,6 +108,12 @@ public class GameManagerScript : MonoBehaviour
             default: Debug.LogWarning("this is not supposed to happen");
                 break;
         }
+    }
+
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
     }
 
     public void SetGameState(GameState state)
