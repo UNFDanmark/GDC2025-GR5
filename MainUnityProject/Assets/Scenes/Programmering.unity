@@ -157,7 +157,7 @@ MonoBehaviour:
   critChance: 1
   atkDamageMult: 1
   atkSpeedMult: 1
-  projectileSpeedMult: 0
+  projectileSpeedMult: 1
   atkDamageIncreaseAmount: 1
   atkSpeedIncreaseAmount: 1
   projectileSpeedIncreaseAmount: 1
@@ -1446,7 +1446,7 @@ GameObject:
   - component: {fileID: 719139573}
   - component: {fileID: 719139572}
   m_Layer: 5
-  m_Name: LeftCard
+  m_Name: TabletCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2285,7 +2285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   childText: {fileID: 1855435935}
   buttonText: {fileID: 300837272}
-  sType: 3
+  sType: 4
   wType: 0
   tabletButton: 1
 --- !u!114 &1423734129
@@ -3178,14 +3178,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 37.64
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 37.64
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
