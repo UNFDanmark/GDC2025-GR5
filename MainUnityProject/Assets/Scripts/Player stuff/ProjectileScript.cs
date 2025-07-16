@@ -47,6 +47,11 @@ public class ProjectileScript : MonoBehaviour
         //attackDamage = attackDamage * (int)dmgMult;
         print($"attack damage sigma is {_attackDamage}");
         print($"Multiplier is {weapon.atkDamageMult}");
+
+        if (projectileSpeed >= 2)
+        {
+            rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        }
     }
 
     public void KillSelf()
