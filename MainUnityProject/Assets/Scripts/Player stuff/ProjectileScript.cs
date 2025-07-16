@@ -69,6 +69,11 @@ public class ProjectileScript : MonoBehaviour
             
         }
 
+       
+    }
+
+    void FixedUpdate()
+    {
         if (isRock)
         {
             rockGrowTimer -= Time.deltaTime;
@@ -86,6 +91,7 @@ public class ProjectileScript : MonoBehaviour
 
         DragDown();
     }
+
 
     public void AddKill()
     {

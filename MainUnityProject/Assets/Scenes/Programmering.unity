@@ -1219,8 +1219,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fe4f5f8693d7c4bb5c982b71c99584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSounds: []
-  sfxSounds: []
+  musicSounds:
+  - name: 
+    clip: {fileID: 0}
+  sfxSounds:
+  - name: 
+    clip: {fileID: 0}
   sfxSoundArray: []
   musicSource: {fileID: 591404634}
   sfxSource: {fileID: 591404634}
