@@ -10,6 +10,7 @@ TagManager:
   - CanonBall
   - Arrow
   - Rock
+  - Ground
   layers:
   - Default
   - TransparentFX

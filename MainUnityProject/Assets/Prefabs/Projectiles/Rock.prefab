@@ -140,6 +140,7 @@ MonoBehaviour:
   hasDeathTouch: 0
   killCounter: 0
   dragForce: 60000
+  growAmount: {x: 0.1, y: 0.1, z: 0.1}
 --- !u!135 &8374690034522073596
 SphereCollider:
   m_ObjectHideFlags: 0

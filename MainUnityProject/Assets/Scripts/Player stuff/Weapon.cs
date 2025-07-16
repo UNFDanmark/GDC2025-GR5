@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 
 [System.Serializable]
 
-public enum StatType {attackDamage, attackSpeed, projectileSpeed}
+public enum StatType {attackDamage, attackSpeed, projectileSpeed, atkDmgMult, atkSpeedMult, projectileSpeedMult}
 public enum WeaponType {Ballista, Canon, Catapult}
 
 public class Weapon : MonoBehaviour
@@ -18,12 +18,20 @@ public class Weapon : MonoBehaviour
     public float attackSpeed;
     public float critDamageMult;
     public float critChance;
+
+    public float atkDamageMult;
+    public float atkSpeedMult;
+    public float projectileSpeedMult;
     
     //upgrade values
     [Header("Increase amounts for stats")]
     public int atkDamageIncreaseAmount;
     public float atkSpeedIncreaseAmount;
     public float projectileSpeedIncreaseAmount;
+    [Header("increase Amount for mult stats")]
+    public float atkDamageMultIncrease;
+    public float atkSpeedMultIncrease;
+    public float projectileMultIncrease;
     [Header("Upgrade cost")]
     public int atkDamageCost;
     public int atkSpeedCost;
@@ -32,6 +40,12 @@ public class Weapon : MonoBehaviour
     public int atkDamageCostIncrease;
     public int atkSpeedCostIncrease;
     public int projectileSpeedCostIncrease;
+    [Header("Multiplier cost")]
+    public int atkDamageMultCost;
+    public int atkSpeedMultCost;
+    public int projectileMultCost;
+    [Header("Multiplier cost increase")]
+    
     [Header("other stuff")]
     //other variables and references
     public float cooldownleft;
@@ -65,7 +79,30 @@ public class Weapon : MonoBehaviour
                     GameManagerScript.Instance.DecreaseMoneyAmount(projectileSpeedCost);
                     IncreaseCostForUpgrade(statType);
                 }
-                
+                break;
+            case StatType.atkDmgMult:
+                if (CheckMoney(currentMoney, atkDamageMultCost))
+                {
+                    atkDamageMult += atkDamageMultIncrease;
+                    GameManagerScript.Instance.DecreaseMoneyAmount(atkDamageMultCost);
+                  //  IncreaseCostForUpgrade(statType);
+                }
+                break;
+            case StatType.atkSpeedMult:
+                if (CheckMoney(currentMoney, atkSpeedMultCost))
+                {
+                    atkSpeedMult += atkSpeedMultIncrease;
+                    GameManagerScript.Instance.DecreaseMoneyAmount(atkDamageMultCost);
+                    //  IncreaseCostForUpgrade(statType);
+                }
+                break;
+            case StatType.projectileSpeedMult:
+                if (CheckMoney(currentMoney, projectileMultCost))
+                {
+                    projectileSpeedMult += projectileMultIncrease;
+                    GameManagerScript.Instance.DecreaseMoneyAmount(projectileMultCost);
+                    //  IncreaseCostForUpgrade(statType);
+                }
                 break;
             default:
                 Debug.Log("No stat could be upgraded");
