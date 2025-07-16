@@ -23,6 +23,8 @@ public class WeaponManagerScript : MonoBehaviour
     CatapultScript catapultScript;
     CatapultShootScript catapultShootScript;
 
+   
+
 
     public static WeaponManagerScript Instance;
 
@@ -52,6 +54,7 @@ public class WeaponManagerScript : MonoBehaviour
 
     void Update()
     {
+     
         TargetTimerLeft -= Time.deltaTime;
         if (TargetTimerLeft <= 0)
         {
@@ -68,6 +71,7 @@ public class WeaponManagerScript : MonoBehaviour
         //vector3.up is the value returned if there is no targets
         if (ballistaScript.canFire() && target != Vector3.up)
         {
+           
             ballistaScript.ShootProjectile(target);    
         }
 

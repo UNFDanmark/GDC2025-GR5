@@ -11,6 +11,9 @@ public enum WeaponType {Ballista, Canon, Catapult}
 
 public class Weapon : MonoBehaviour
 {
+
+    public bool isBallista;
+    public bool isCannon;
     public WeaponType weaponType;
     public GameObject projectilePrefab;
     public float projectileSpeed;
@@ -50,6 +53,10 @@ public class Weapon : MonoBehaviour
     //other variables and references
     public float cooldownleft;
     public float atkCooldown;
+    
+    
+    float soundCooldown = 0.1f;
+    float soundCooldownLeft = 0.1f;
     
     public void UpgradeStat(StatType statType, int currentMoney)
     {
@@ -114,9 +121,18 @@ public class Weapon : MonoBehaviour
     [ContextMenu("FireBullet")]
     public void ShootProjectile(Vector3 targetDirection)
     {
+
+        if (isBallista && soundCooldownLeft <= 0)
+        {
+            AudioManager.Instance.PlaySFX("CannonShoot");
+            soundCooldownLeft = soundCooldown;
+        }  else if (isCannon && soundCooldownLeft <= 0)
+        {
+            AudioManager.Instance.PlaySFX("BallistaShoot");
+            soundCooldownLeft = soundCooldown;
+        }
         
         
-        AudioManager.Instance.PlaySFX("");
         
         GameObject tempProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.LookRotation(targetDirection));
         //tempProjectile.transform.SetLocalPositionAndRotation(transform.position, Quaternion.LookRotation(targetDirection));
@@ -168,6 +184,7 @@ public class Weapon : MonoBehaviour
     }
     void Update()
     {
+        soundCooldownLeft -= Time.deltaTime;
         cooldownleft -= Time.deltaTime;
     }
 

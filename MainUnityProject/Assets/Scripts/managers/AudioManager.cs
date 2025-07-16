@@ -54,6 +54,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("ShouldPlayOneShot");
             sfxSource.PlayOneShot(sound.clip);
         }
     }
