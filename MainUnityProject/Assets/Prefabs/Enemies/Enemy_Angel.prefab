@@ -126,7 +126,7 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
   enemyStats: {fileID: 0}
-  speed: 0.02
+  speed: 0.1
 --- !u!54 &5525034020927402547
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -173,4 +173,4 @@ MonoBehaviour:
   maxHealth: 1
   despawnTimer: 0
   damage: 5
-  moneyDrop: 5
+  moneyDrop: 1
