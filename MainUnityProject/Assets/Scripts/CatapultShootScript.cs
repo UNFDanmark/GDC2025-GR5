@@ -30,6 +30,7 @@ public class CatapultShootScript : MonoBehaviour
          Debug.DrawRay(basketPoint.position, newTargetVector - basketPoint.position, Color.red, 1); 
          
          tempProjectile.GetComponent<Rigidbody>().AddForce(newTargetVector * latestCatapultScript.projectileSpeed, ForceMode.Impulse );
+         tempProjectile.GetComponent<ProjectileScript>().GetStatsFromWeapon(latestCatapultScript);
         
          
     }

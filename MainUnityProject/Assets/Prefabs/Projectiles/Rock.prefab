@@ -133,8 +133,9 @@ MonoBehaviour:
   projectileSpeed: 0
   attackDamage: 0
   attackSpeed: 0
-  critDamageMult: 0
-  critChance: 0
+  dmgMult: 0
+  FireRateMult: 0
+  projectileSpeedMult: 0
   isCanonBall: 0
   isRock: 1
   hasDeathTouch: 0

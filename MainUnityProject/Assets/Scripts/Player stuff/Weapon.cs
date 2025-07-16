@@ -19,9 +19,9 @@ public class Weapon : MonoBehaviour
     public float critDamageMult;
     public float critChance;
 
-    public float atkDamageMult;
-    public float atkSpeedMult;
-    public float projectileSpeedMult;
+    [Range(1, float.MaxValue)] public float atkDamageMult;
+    [Range(1, float.MaxValue)] public float atkSpeedMult;
+    [Range(1, float.MaxValue)] public float projectileSpeedMult;
     
     //upgrade values
     [Header("Increase amounts for stats")]
@@ -29,7 +29,7 @@ public class Weapon : MonoBehaviour
     public float atkSpeedIncreaseAmount;
     public float projectileSpeedIncreaseAmount;
     [Header("increase Amount for mult stats")]
-    public float atkDamageMultIncrease;
+    public float atkDamageMultIncrease; 
     public float atkSpeedMultIncrease;
     public float projectileMultIncrease;
     [Header("Upgrade cost")]

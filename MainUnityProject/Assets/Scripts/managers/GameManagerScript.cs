@@ -70,6 +70,7 @@ public class GameManagerScript : MonoBehaviour
             case GameState.SpawningWave:
                 //Time.timeScale = 1f;
                 WaveManagerScript.Instance.SpawnWave();
+                tabletSpawned = false;
                 break;
             case GameState.Wave:
                 break;

@@ -78,7 +78,7 @@ public class AngelScript : MonoBehaviour
             
             if (gameObject.GetInstanceID() == angel.GetInstanceID())
             {
-                print($"instance id of self is {gameObject.GetInstanceID()} comparison to {angel.GetInstanceID()}");
+                //print($"instance id of self is {gameObject.GetInstanceID()} comparison to {angel.GetInstanceID()}");
                 WaveManagerScript.Instance.RemoveEnemyFromList(angel);
                 break;
             }
@@ -93,18 +93,18 @@ public class AngelScript : MonoBehaviour
         if (other.gameObject.CompareTag("Arrow"))
         {
             ProjectileScript projectileScript = other.gameObject.GetComponent<ProjectileScript>();
-            TakeDamage(projectileScript.attackDamage);
+            TakeDamage(projectileScript._attackDamage);
             projectileScript.KillSelf();
         } else if (other.gameObject.CompareTag("CanonBall"))
         {
             ProjectileScript projectileScript = other.gameObject.GetComponent<ProjectileScript>();
-            TakeDamage(projectileScript.attackDamage);
+            TakeDamage(projectileScript._attackDamage);
             projectileScript.AddKill(); //also kills canonball if above threshold of kills
            
         } else if (other.gameObject.CompareTag("Rock"))
         {
             ProjectileScript projectileScript = other.gameObject.GetComponent<ProjectileScript>();
-            TakeDamage(projectileScript.attackDamage);
+            TakeDamage(projectileScript._attackDamage);
         }
     }
 

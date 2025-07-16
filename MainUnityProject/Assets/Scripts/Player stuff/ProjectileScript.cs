@@ -7,7 +7,7 @@ public class ProjectileScript : MonoBehaviour
     Rigidbody rb;
     public WeaponType weaponType;
     public float projectileSpeed;
-    public int attackDamage;
+    public int _attackDamage;
     public float attackSpeed;
 
     public float dmgMult;
@@ -38,13 +38,15 @@ public class ProjectileScript : MonoBehaviour
     public void GetStatsFromWeapon(Weapon weapon)
     {
         weaponType = weapon.weaponType;
-        attackDamage = weapon.attackDamage;
+        _attackDamage = weapon.attackDamage;
         dmgMult = weapon.atkDamageMult;
         FireRateMult = weapon.atkSpeedMult;
         projectileSpeedMult = weapon.projectileSpeedMult;
         projectileSpeed = weapon.projectileSpeed;
-
-        attackDamage = attackDamage * (int)dmgMult;
+        print($"weapon damage is {weapon.attackDamage}");
+        //attackDamage = attackDamage * (int)dmgMult;
+        print($"attack damage sigma is {_attackDamage}");
+        print($"Multiplier is {weapon.atkDamageMult}");
     }
 
     public void KillSelf()
