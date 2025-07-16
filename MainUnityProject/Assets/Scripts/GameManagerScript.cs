@@ -10,6 +10,15 @@ public class GameManagerScript : MonoBehaviour
     public GameObject leftPoint;
     public GameObject middlePoint;
     public GameObject rightPoint;
+
+    public GameObject leftCard;
+    public GameObject middleCard;
+    public GameObject rightCard;
+
+    bool tabletSpawned;
+    
+    
+    int randomInt;
     
     public TabletCardScript[] tabletSettings;
     private Queue<GameObject> tabletCards;
@@ -39,11 +48,13 @@ public class GameManagerScript : MonoBehaviour
 
     void Start()
     {
+        
         tabletCards = new Queue<GameObject>();
         foreach (var tabletSetting in tabletSettings)
         {
             tabletCards.Enqueue(tabletPrefab);
         }
+       
     }
 
 
@@ -57,11 +68,16 @@ public class GameManagerScript : MonoBehaviour
             case GameState.Tutorial:
                 break;
             case GameState.SpawningWave:
+                //Time.timeScale = 1f;
                 WaveManagerScript.Instance.SpawnWave();
                 break;
             case GameState.Wave:
                 break;
             case GameState.TabletShop:
+                
+              //  Time.timeScale = 0f;
+                SpawnTablets();
+                tabletSpawned = true;
                 break;
             case GameState.GameOver: 
                 break;
@@ -113,14 +129,33 @@ public class GameManagerScript : MonoBehaviour
 
     public void SpawnTablets()
     {
-        GameObject TempCard = Instantiate(tabletCards.Dequeue(), leftPoint.transform);
-        TempCard.GetComponentInChildren<ButtonScript>().sType = PickRandomStatType(); // change this
-
+        if (!tabletSpawned)
+        {
+            leftCard = Instantiate(tabletCards.Dequeue(), leftPoint.transform);
+            leftCard.GetComponentInChildren<ButtonScript>().sType = PickRandomStatType(); // change this
+            leftCard.GetComponentInChildren<ButtonScript>().wType = PickRandomWeaponType();
+        
+            middleCard = Instantiate(tabletCards.Dequeue(), middlePoint.transform);
+            middleCard.GetComponentInChildren<ButtonScript>().sType = PickRandomStatType(); // change this
+            middleCard.GetComponentInChildren<ButtonScript>().wType = PickRandomWeaponType();
+        
+            rightCard = Instantiate(tabletCards.Dequeue(), rightPoint.transform);
+            rightCard.GetComponentInChildren<ButtonScript>().sType = PickRandomStatType(); // change this
+            rightCard.GetComponentInChildren<ButtonScript>().wType = PickRandomWeaponType();    
+        }
+    }
+    public void KillAllCards()
+    {
+        DestroyImmediate(leftCard);
+        Destroy(middleCard);
+        Destroy(rightCard);
+        
+        SetGameState(GameState.SpawningWave); //might be wrong state
     }
 
     public StatType PickRandomStatType()
     {
-        int randomInt = Random.Range(0, tabletCards.Count/3); // change this
+        randomInt = Random.Range(0, 3); 
 
         switch (randomInt)
         {
@@ -132,6 +167,26 @@ public class GameManagerScript : MonoBehaviour
                 return StatType.projectileSpeedMult;
                 
         }
+
+        return StatType.atkDmgMult; // temp CHANGE THIS
+    }
+
+    public WeaponType PickRandomWeaponType()
+    {
+        randomInt = Random.Range(0, 3); 
+
+        switch (randomInt)
+        {
+            case 1:
+                return WeaponType.Ballista;
+            case 2:
+                return WeaponType.Canon;
+            case 3:
+                return WeaponType.Catapult;
+                
+        }
+
+        return WeaponType.Ballista;
     }
 
 

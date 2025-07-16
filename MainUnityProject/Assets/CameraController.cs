@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        RotateCamera();
+        
         inputValue = CameraAction.ReadValue<float>();
     }
 
@@ -32,6 +32,9 @@ public class CameraController : MonoBehaviour
             transform.Rotate(Vector3.up, 0.5f);
         }
     }
-    
-    
+
+    void FixedUpdate()
+    {
+        RotateCamera();
+    }
 }

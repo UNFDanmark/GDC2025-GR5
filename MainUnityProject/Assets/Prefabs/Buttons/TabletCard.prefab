@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634a2b48e843dd3428b19ab4bb6d2fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentObject: {fileID: 6433405857931192596}
   childText: {fileID: 8998025611826491076}
   buttonText: {fileID: 7238882434836779388}
   sType: 4
