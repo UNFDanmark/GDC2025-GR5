@@ -114,6 +114,10 @@ public class Weapon : MonoBehaviour
     [ContextMenu("FireBullet")]
     public void ShootProjectile(Vector3 targetDirection)
     {
+        
+        
+        AudioManager.Instance.PlaySFX("");
+        
         GameObject tempProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.LookRotation(targetDirection));
         //tempProjectile.transform.SetLocalPositionAndRotation(transform.position, Quaternion.LookRotation(targetDirection));
        tempProjectile.GetComponent<ProjectileScript>().GetStatsFromWeapon(this);
