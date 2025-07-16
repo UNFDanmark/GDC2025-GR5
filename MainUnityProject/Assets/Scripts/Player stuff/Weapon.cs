@@ -88,6 +88,22 @@ public class Weapon : MonoBehaviour
                   //  IncreaseCostForUpgrade(statType);
                 }
                 break;
+            case StatType.atkSpeedMult:
+                if (CheckMoney(currentMoney, atkSpeedMultCost))
+                {
+                    atkSpeedMult += atkSpeedMultIncrease;
+                    GameManagerScript.Instance.DecreaseMoneyAmount(atkDamageMultCost);
+                    //  IncreaseCostForUpgrade(statType);
+                }
+                break;
+            case StatType.projectileSpeedMult:
+                if (CheckMoney(currentMoney, projectileMultCost))
+                {
+                    projectileSpeedMult += projectileMultIncrease;
+                    GameManagerScript.Instance.DecreaseMoneyAmount(projectileMultCost);
+                    //  IncreaseCostForUpgrade(statType);
+                }
+                break;
             default:
                 Debug.Log("No stat could be upgraded");
                 break;

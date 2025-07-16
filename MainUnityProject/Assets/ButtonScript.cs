@@ -6,11 +6,14 @@ using UnityEngine.UI;
 public class ButtonScript : MonoBehaviour
 {
     Button button;
+    public GameObject parentObject;
     public TextMeshProUGUI childText;
     public TextMeshProUGUI buttonText;
     public StatType sType;
     public WeaponType wType;
     public bool tabletButton;
+    float deleteTimer = 1f;
+    bool buttonPressed;
 
     void Start()
     {
@@ -19,23 +22,23 @@ public class ButtonScript : MonoBehaviour
         button.onClick.AddListener(MinFunktion);
     }
 
-    void Update()
-    {
-        
-    }
 
     void MinFunktion()
     {
-      
-        
             GameManagerScript.Instance.UpgradeWeapon(wType, sType);
             ChangeText();
-            return;
-        
-        
-        
-        
+            if (tabletButton)
+            {
+                GameManagerScript.Instance.KillAllCards();    
+            }
+            
+            
+
     }
+
+    
+    
+    
 
 
     public void ChangeText()
@@ -64,8 +67,18 @@ public class ButtonScript : MonoBehaviour
 
                 if (sType == StatType.atkDmgMult)
                 {
-                    childText.text =  "Current DMG mult: " +  WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().atkDamageMult;
+                    childText.text =  "Current Ballista DMG mult: " +  WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().atkDamageMult;
                     buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().atkDamageMultCost;
+                }
+                if (sType == StatType.atkSpeedMult)
+                {
+                    childText.text =  "Current Ballista FireRate mult: " +  WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().atkSpeedMult;
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().atkSpeedMultCost;
+                }
+                if (sType == StatType.projectileSpeedMult)
+                {
+                    childText.text =  "Current Ballista projectile speed mult: " +  WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().projectileSpeedMult;
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().projectileMultCost;
                 }
 
                 break;
@@ -89,6 +102,21 @@ public class ButtonScript : MonoBehaviour
                     childText.text =  "Power: " + WeaponManagerScript.Instance.Canon.GetComponent<Weapon>().projectileSpeed;
                     buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Canon.GetComponent<Weapon>().projectileSpeedCost;
                 }
+                if (sType == StatType.atkDmgMult)
+                {
+                    childText.text =  "Current Cannon DMG mult: " +  WeaponManagerScript.Instance.Canon.GetComponent<Weapon>().atkDamageMult;
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Canon.GetComponent<Weapon>().atkDamageMultCost;
+                }
+                if (sType == StatType.atkSpeedMult)
+                {
+                    childText.text =  "Current Cannon FireRate mult: " +  WeaponManagerScript.Instance.Canon.GetComponent<Weapon>().atkSpeedMult;
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Canon.GetComponent<Weapon>().atkSpeedMultCost;
+                }
+                if (sType == StatType.projectileSpeedMult)
+                {
+                    childText.text =  "Current Cannon projectile speed mult: " +  WeaponManagerScript.Instance.Canon.GetComponent<Weapon>().projectileSpeedMult;
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Canon.GetComponent<Weapon>().projectileMultCost;
+                }
 
                 break;
             }
@@ -111,6 +139,21 @@ public class ButtonScript : MonoBehaviour
                 {
                     childText.text =  "Power: " + WeaponManagerScript.Instance.Catapult.GetComponent<Weapon>().projectileSpeed;
                     buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Catapult.GetComponent<Weapon>().projectileSpeedCost;
+                }
+                if (sType == StatType.atkDmgMult)
+                {
+                    childText.text =  "Current Catapult DMG mult: " +  WeaponManagerScript.Instance.Catapult.GetComponent<Weapon>().atkDamageMult;
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Catapult.GetComponent<Weapon>().atkDamageMultCost;
+                }
+                if (sType == StatType.atkSpeedMult)
+                {
+                    childText.text =  "Current Catapult FireRate mult: " +  WeaponManagerScript.Instance.Catapult.GetComponent<Weapon>().atkSpeedMult;
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Catapult.GetComponent<Weapon>().atkSpeedMultCost;
+                }
+                if (sType == StatType.projectileSpeedMult)
+                {
+                    childText.text =  "Current Catapult projectile speed mult: " +  WeaponManagerScript.Instance.Catapult.GetComponent<Weapon>().projectileSpeedMult;
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Catapult.GetComponent<Weapon>().projectileMultCost;
                 }
 
                 break;

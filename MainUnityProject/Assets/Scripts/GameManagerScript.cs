@@ -1,13 +1,34 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 public enum GameState {Menu, Tutorial, SpawningWave, Wave, TabletShop, GameOver}
 public class GameManagerScript : MonoBehaviour
 {
+    public GameObject leftPoint;
+    public GameObject middlePoint;
+    public GameObject rightPoint;
+
+    public GameObject leftCard;
+    public GameObject middleCard;
+    public GameObject rightCard;
+
+    bool tabletSpawned;
+    
+    
+    int randomInt;
+    
+    public TabletCardScript[] tabletSettings;
+    private Queue<GameObject> tabletCards;
+    public GameObject tabletPrefab;
     public static GameManagerScript Instance;
     public GameState gameState;
-    public int money; //can make float later, make upgrades for collecting money "money 25% increase" type shit
+    public int money; //can make float later, make upgrades for collecting money "money 25% increase" type 
+    
+    
+    
     
     void Awake()
     {
@@ -25,9 +46,21 @@ public class GameManagerScript : MonoBehaviour
         SetGameState(GameState.SpawningWave); // for testing
     }
 
+    void Start()
+    {
+        
+        tabletCards = new Queue<GameObject>();
+        foreach (var tabletSetting in tabletSettings)
+        {
+            tabletCards.Enqueue(tabletPrefab);
+        }
+       
+    }
+
 
     void Update()
     {
+        
         switch (gameState)
         {
             case GameState.Menu:
@@ -35,11 +68,16 @@ public class GameManagerScript : MonoBehaviour
             case GameState.Tutorial:
                 break;
             case GameState.SpawningWave:
+                //Time.timeScale = 1f;
                 WaveManagerScript.Instance.SpawnWave();
                 break;
             case GameState.Wave:
                 break;
             case GameState.TabletShop:
+                
+              //  Time.timeScale = 0f;
+                SpawnTablets();
+                tabletSpawned = true;
                 break;
             case GameState.GameOver: 
                 break;
@@ -87,6 +125,68 @@ public class GameManagerScript : MonoBehaviour
                 WeaponManagerScript.Instance.UpgradeCatapult(sType, money);
                 break;
         }
+    }
+
+    public void SpawnTablets()
+    {
+        if (!tabletSpawned)
+        {
+            leftCard = Instantiate(tabletCards.Dequeue(), leftPoint.transform);
+            leftCard.GetComponentInChildren<ButtonScript>().sType = PickRandomStatType(); // change this
+            leftCard.GetComponentInChildren<ButtonScript>().wType = PickRandomWeaponType();
+        
+            middleCard = Instantiate(tabletCards.Dequeue(), middlePoint.transform);
+            middleCard.GetComponentInChildren<ButtonScript>().sType = PickRandomStatType(); // change this
+            middleCard.GetComponentInChildren<ButtonScript>().wType = PickRandomWeaponType();
+        
+            rightCard = Instantiate(tabletCards.Dequeue(), rightPoint.transform);
+            rightCard.GetComponentInChildren<ButtonScript>().sType = PickRandomStatType(); // change this
+            rightCard.GetComponentInChildren<ButtonScript>().wType = PickRandomWeaponType();    
+        }
+    }
+    public void KillAllCards()
+    {
+        DestroyImmediate(leftCard);
+        Destroy(middleCard);
+        Destroy(rightCard);
+        
+        SetGameState(GameState.SpawningWave); //might be wrong state
+    }
+
+    public StatType PickRandomStatType()
+    {
+        randomInt = Random.Range(0, 3); 
+
+        switch (randomInt)
+        {
+            case 1:
+                return StatType.atkDmgMult;
+            case 2:
+                return StatType.atkSpeedMult;
+            case 3:
+                return StatType.projectileSpeedMult;
+                
+        }
+
+        return StatType.atkDmgMult; // temp CHANGE THIS
+    }
+
+    public WeaponType PickRandomWeaponType()
+    {
+        randomInt = Random.Range(0, 3); 
+
+        switch (randomInt)
+        {
+            case 1:
+                return WeaponType.Ballista;
+            case 2:
+                return WeaponType.Canon;
+            case 3:
+                return WeaponType.Catapult;
+                
+        }
+
+        return WeaponType.Ballista;
     }
 
 
