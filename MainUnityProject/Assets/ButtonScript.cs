@@ -10,6 +10,7 @@ public class ButtonScript : MonoBehaviour
     public TextMeshProUGUI buttonText;
     public StatType sType;
     public WeaponType wType;
+    public bool tabletButton;
 
     void Start()
     {
@@ -25,8 +26,15 @@ public class ButtonScript : MonoBehaviour
 
     void MinFunktion()
     {
-        GameManagerScript.Instance.UpgradeWeapon(wType, sType);
-        ChangeText();
+      
+        
+            GameManagerScript.Instance.UpgradeWeapon(wType, sType);
+            ChangeText();
+            return;
+        
+        
+        
+        
     }
 
 
@@ -52,6 +60,12 @@ public class ButtonScript : MonoBehaviour
                 {
                     childText.text =  "Arrow Speed: " + WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().projectileSpeed;
                     buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().projectileSpeedCost;
+                }
+
+                if (sType == StatType.atkDmgMult)
+                {
+                    childText.text =  "Current DMG mult: " +  WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().atkDamageMult;
+                    buttonText.text = "Upgrade for: " + WeaponManagerScript.Instance.Ballista.GetComponent<Weapon>().atkDamageMultCost;
                 }
 
                 break;

@@ -9,8 +9,14 @@ public class ProjectileScript : MonoBehaviour
     public float projectileSpeed;
     public int attackDamage;
     public float attackSpeed;
-    public float critDamageMult;
-    public float critChance;
+
+    public float dmgMult;
+    public float FireRateMult;
+    public float projectileSpeedMult;
+    
+    
+    
+    
     public bool isCanonBall;
     public bool isRock;
     public bool hasDeathTouch;
@@ -33,9 +39,12 @@ public class ProjectileScript : MonoBehaviour
     {
         weaponType = weapon.weaponType;
         attackDamage = weapon.attackDamage;
-        critDamageMult = weapon.critDamageMult;
-        critChance = weapon.critChance;
+        dmgMult = weapon.atkDamageMult;
+        FireRateMult = weapon.atkSpeedMult;
+        projectileSpeedMult = weapon.projectileSpeedMult;
         projectileSpeed = weapon.projectileSpeed;
+
+        attackDamage = attackDamage * (int)dmgMult;
     }
 
     public void KillSelf()
