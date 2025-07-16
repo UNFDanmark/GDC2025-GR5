@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -26,7 +27,22 @@ public class GameManagerScript : MonoBehaviour
     public static GameManagerScript Instance;
     public GameState gameState;
     public int money; //can make float later, make upgrades for collecting money "money 25% increase" type 
-    
+
+
+
+    public GameObject MoneyUI;
+    public GameObject AngelsLeftUI;
+    public GameObject HP;
+
+    TextMeshProUGUI moneyText, hpText, angelsLeftText;
+
+    public void UpdateTextUI()
+    {
+        moneyText.text = $"{money}";
+
+
+
+    }
     
     
     
@@ -48,7 +64,9 @@ public class GameManagerScript : MonoBehaviour
 
     void Start()
     {
-        
+        angelsLeftText = AngelsLeftUI.GetComponentInChildren<TextMeshProUGUI>();
+        hpText = HP.GetComponentInChildren<TextMeshProUGUI>();
+        moneyText = MoneyUI.GetComponentInChildren<TextMeshProUGUI>();
         tabletCards = new Queue<GameObject>();
         foreach (var tabletSetting in tabletSettings)
         {
@@ -60,7 +78,7 @@ public class GameManagerScript : MonoBehaviour
 
     void Update()
     {
-        
+        UpdateTextUI();    
         switch (gameState)
         {
             case GameState.Menu:
