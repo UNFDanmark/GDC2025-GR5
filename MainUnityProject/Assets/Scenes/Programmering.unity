@@ -1186,6 +1186,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a63783d62afdd64eb4b5c98a269911a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CameraAction:
+    m_Name: Camera
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 667d7ca6-0966-4f14-b5ad-26f85137ab65
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 1D Axis
+      m_Id: 36ae41cc-4c52-4c69-8620-7269038b5b0d
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Camera
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: d4f0bec0-188c-4123-9669-5b59def5a15e
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Camera
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 9de6f191-2b0d-44e4-b0d5-2af82ee1f754
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Camera
+      m_Flags: 8
+    m_Flags: 0
 --- !u!4 &734897778
 Transform:
   m_ObjectHideFlags: 0

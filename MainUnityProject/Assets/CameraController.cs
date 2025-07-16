@@ -1,16 +1,37 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
+    
+    public InputAction CameraAction;
+    float inputValue;
+
     void Start()
     {
-        
+        CameraAction.Enable();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        RotateCamera();
+        inputValue = CameraAction.ReadValue<float>();
     }
+
+    public void RotateCamera()
+    {
+        if (inputValue > 0)
+        {
+            transform.Rotate(Vector3.up, -0.5f);
+        }
+
+        if (inputValue < 0)
+        {
+            transform.Rotate(Vector3.up, 0.5f);
+        }
+    }
+    
+    
 }
