@@ -8,6 +8,8 @@ using Random = UnityEngine.Random;
 public enum GameState {Menu, Tutorial, SpawningWave, Wave, TabletShop, GameOver}
 public class GameManagerScript : MonoBehaviour
 {
+    public Health healthScript;
+    
     public GameObject leftPoint;
     public GameObject middlePoint;
     public GameObject rightPoint;
@@ -39,8 +41,8 @@ public class GameManagerScript : MonoBehaviour
     public void UpdateTextUI()
     {
         moneyText.text = $"{money}";
-
-
+        hpText.text = $"{healthScript.healthPoints}";
+        angelsLeftText.text = $"{WaveManagerScript.Instance.enemyList.Count}";
 
     }
     

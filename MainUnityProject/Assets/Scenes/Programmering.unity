@@ -2130,18 +2130,6 @@ MonoBehaviour:
     waveTimeLength: 5
     spawnerCooldown: 4.5
     enemyPrefab: {fileID: 7717888739778281036, guid: 84b50eca0d720dd41abf77dcdbd71f27, type: 3}
-  - difficultyName: tutorial
-    amountOfEnemiesToSpawn: 500
-    useWaveTimer: 1
-    waveTimeLength: 5
-    spawnerCooldown: 0
-    enemyPrefab: {fileID: 7717888739778281036, guid: 84b50eca0d720dd41abf77dcdbd71f27, type: 3}
-  - difficultyName: tutorial
-    amountOfEnemiesToSpawn: 500
-    useWaveTimer: 1
-    waveTimeLength: 5
-    spawnerCooldown: 0
-    enemyPrefab: {fileID: 7717888739778281036, guid: 84b50eca0d720dd41abf77dcdbd71f27, type: 3}
   currentWave: 0
   enemySpawner: {fileID: 671274052}
 --- !u!4 &845517162
@@ -2207,7 +2195,7 @@ MonoBehaviour:
   Canon: {fileID: 717172657}
   Catapult: {fileID: 161544801}
   TargetPos: []
-  TargetUpdateTimer: 1
+  TargetUpdateTimer: 0.2
 --- !u!1 &906497466
 GameObject:
   m_ObjectHideFlags: 0
@@ -3694,6 +3682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc3442ad6086634a80dc07da5852c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthScript: {fileID: 2007867083}
   leftPoint: {fileID: 1820771663}
   middlePoint: {fileID: 1291538101}
   rightPoint: {fileID: 458482121}
@@ -3927,8 +3916,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767eb7eeef246da459d70428568eeb17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 0
-  maxHealth: 0
+  healthPoints: 200
+  maxHealth: 200
   despawnTimer: 0
 --- !u!1 &2101910115
 GameObject:
