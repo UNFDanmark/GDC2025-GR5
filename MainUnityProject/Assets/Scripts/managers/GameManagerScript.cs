@@ -70,10 +70,7 @@ public class GameManagerScript : MonoBehaviour
         hpText = HP.GetComponentInChildren<TextMeshProUGUI>();
         moneyText = MoneyUI.GetComponentInChildren<TextMeshProUGUI>();
         tabletCards = new Queue<GameObject>();
-        foreach (var tabletSetting in tabletSettings)
-        {
-            tabletCards.Enqueue(tabletPrefab);
-        }
+       
        
     }
 
@@ -150,6 +147,11 @@ public class GameManagerScript : MonoBehaviour
 
     public void SpawnTablets()
     {
+        tabletCards.Clear();
+        foreach (var tabletSetting in tabletSettings)
+        {
+            tabletCards.Enqueue(tabletPrefab);
+        }
         if (!tabletSpawned)
         {
             leftCard = Instantiate(tabletCards.Dequeue(), leftPoint.transform);

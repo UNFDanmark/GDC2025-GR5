@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
     public Sound[] musicSounds, sfxSounds;
     public SoundArray[] sfxSoundArray;
-    public AudioSource musicSource, sfxSource;
+    public AudioSource musicSource, sfxSource, extraSFXSource;
 
     private void Start()
     {
