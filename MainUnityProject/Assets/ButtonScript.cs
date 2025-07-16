@@ -27,7 +27,12 @@ public class ButtonScript : MonoBehaviour
     {
             GameManagerScript.Instance.UpgradeWeapon(wType, sType);
             ChangeText();
-            GameManagerScript.Instance.KillAllCards();
+            if (tabletButton)
+            {
+                GameManagerScript.Instance.KillAllCards();    
+            }
+            
+            
 
     }
 

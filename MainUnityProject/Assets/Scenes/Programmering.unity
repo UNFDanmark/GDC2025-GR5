@@ -1218,7 +1218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 1
   projectilePrefab: {fileID: 4968851036529052376, guid: 50577ab4896aa0d4ebfdb1e877321371, type: 3}
-  projectileSpeed: 30
+  projectileSpeed: 90
   attackDamage: 1
   attackSpeed: 1
   critDamageMult: 0
