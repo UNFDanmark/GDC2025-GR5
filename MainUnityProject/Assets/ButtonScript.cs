@@ -26,15 +26,9 @@ public class ButtonScript : MonoBehaviour
 
     void MinFunktion()
     {
-      
-        
             GameManagerScript.Instance.UpgradeWeapon(wType, sType);
             ChangeText();
             return;
-        
-        
-        
-        
     }
 
 
