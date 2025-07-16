@@ -20,8 +20,8 @@ public class Weapon : MonoBehaviour
     public float critChance;
 
     [Range(1, float.MaxValue)] public float atkDamageMult;
-    [Range(1, float.MaxValue)] public float atkSpeedMult;
-    [Range(1, float.MaxValue)] public float projectileSpeedMult;
+     public float atkSpeedMult;
+     public float projectileSpeedMult;
     
     //upgrade values
     [Header("Increase amounts for stats")]
