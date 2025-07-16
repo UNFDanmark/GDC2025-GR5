@@ -56,7 +56,7 @@ public class ProjectileScript : MonoBehaviour
 
     public void KillSelf()
     {
-        AudioManager.Instance.PlaySFX("AngelDeath");
+        
         Destroy(this.gameObject);
     }
 

@@ -25,6 +25,7 @@ public class ButtonScript : MonoBehaviour
 
     void MinFunktion()
     {
+        AudioManager.Instance.PlaySFX("Coin");
             GameManagerScript.Instance.UpgradeWeapon(wType, sType);
             ChangeText();
             if (tabletButton)

@@ -127,7 +127,7 @@ public class Weapon : MonoBehaviour
 
         if (isCannon && soundCooldownLeft <= 0)
         {
-            AudioManager.Instance.PlaySFX("CannonShoot");
+            AudioManager.Instance.PlaySFXExtra("CannonShoot");
             soundCooldownLeft = soundCooldown;
         } 
         if (isBallista && sound2CooldownLeft <= 0)

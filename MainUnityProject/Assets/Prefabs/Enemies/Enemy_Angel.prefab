@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67d11c3fcfdb9de479bd185f3df56ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Agent: {fileID: 0}
+  soundSourcePrefab: {fileID: 467709552112288994, guid: 56d9f07d84158f94fa97edb5d8896cca, type: 3}
   Target: {fileID: 0}
   isDead: 0
   healthPoints: 0

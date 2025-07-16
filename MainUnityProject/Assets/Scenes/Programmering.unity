@@ -1179,7 +1179,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.139
+  m_Volume: 0.431
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1287,6 +1287,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: cad1b48a860763a4898ea3c7facf29d8, type: 3}
   - name: AngelDeath
     clip: {fileID: 8300000, guid: 10d398bcc9e1a604181353bc8ad302a3, type: 3}
+  - name: Coin
+    clip: {fileID: 8300000, guid: 6d9974b530b468542ad2263c8c80fbfc, type: 3}
   sfxSoundArray: []
   musicSource: {fileID: 591404634}
   sfxSource: {fileID: 591404634}

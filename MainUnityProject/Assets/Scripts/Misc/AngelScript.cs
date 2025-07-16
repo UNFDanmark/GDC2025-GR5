@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class AngelScript : MonoBehaviour
 {
-    public NavMeshAgent Agent;
+    public GameObject soundSourcePrefab;
     public GameObject Target;
     public bool isDead;
     
@@ -64,8 +64,8 @@ public class AngelScript : MonoBehaviour
         FindSelfInArray();
         
         //particle stuff here
-        
-        
+
+        Instantiate(soundSourcePrefab);
        GameManagerScript.Instance.IncreaseMoneyAmount(moneyDrop);
         yield return new WaitForSeconds(despawnTimer); // maybe switch despawn timer for when particles are done playing
         Destroy(this.gameObject);
