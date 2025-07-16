@@ -57,6 +57,9 @@ public class Weapon : MonoBehaviour
     
     float soundCooldown = 0.1f;
     float soundCooldownLeft = 0.1f;
+
+    float sound2Cooldown = 0.1f;
+    float sound2CooldownLeft = 0.1f;
     
     public void UpgradeStat(StatType statType, int currentMoney)
     {
@@ -122,14 +125,15 @@ public class Weapon : MonoBehaviour
     public void ShootProjectile(Vector3 targetDirection)
     {
 
-        if (isBallista && soundCooldownLeft <= 0)
+        if (isCannon && soundCooldownLeft <= 0)
         {
             AudioManager.Instance.PlaySFX("CannonShoot");
             soundCooldownLeft = soundCooldown;
-        }  else if (isCannon && soundCooldownLeft <= 0)
+        } 
+        if (isBallista && sound2CooldownLeft <= 0)
         {
-            AudioManager.Instance.PlaySFX("BallistaShoot");
-            soundCooldownLeft = soundCooldown;
+            AudioManager.Instance.PlaySFXExtra("BallistaShoot");
+            sound2CooldownLeft = sound2Cooldown;
         }
         
         
@@ -184,6 +188,7 @@ public class Weapon : MonoBehaviour
     }
     void Update()
     {
+        sound2CooldownLeft -= Time.deltaTime;
         soundCooldownLeft -= Time.deltaTime;
         cooldownleft -= Time.deltaTime;
     }
