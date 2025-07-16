@@ -41,7 +41,7 @@ public class Health : MonoBehaviour
        print("GAME OVER");
         
         
-        
+        GameManagerScript.Instance.SetGameState(GameState.GameOver);
         yield return new WaitForSeconds(despawnTimer); // maybe switch despawn timer for when particles are done playing
         
     }

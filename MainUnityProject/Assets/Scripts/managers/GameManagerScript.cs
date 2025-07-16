@@ -11,6 +11,8 @@ public class GameManagerScript : MonoBehaviour
 {
     public Health healthScript;
     public Button pauseButton;
+    public GameObject block;
+    public GameObject GameOverScreen;
     
     
     public GameObject leftPoint;
@@ -64,7 +66,7 @@ public class GameManagerScript : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        SetGameState(GameState.SpawningWave); // for testing
+        SetGameState(GameState.Menu); // for testing
     }
 
     void Start()
@@ -87,11 +89,14 @@ public class GameManagerScript : MonoBehaviour
         switch (gameState)
         {
             case GameState.Menu:
+                block.SetActive(true);
+                GameOverScreen.SetActive(false);
+                Time.timeScale = 0f;
                 break;
             case GameState.Tutorial:
                 break;
             case GameState.SpawningWave:
-                //Time.timeScale = 1f;
+                Time.timeScale = 1f;
                 WaveManagerScript.Instance.SpawnWave();
                 tabletSpawned = false;
                 break;
@@ -103,7 +108,9 @@ public class GameManagerScript : MonoBehaviour
                 SpawnTablets();
                 tabletSpawned = true;
                 break;
-            case GameState.GameOver: 
+            case GameState.GameOver:
+                GameOverScreen.SetActive(true);
+                
                 break;
             default: Debug.LogWarning("this is not supposed to happen");
                 break;
