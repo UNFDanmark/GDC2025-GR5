@@ -23,12 +23,12 @@ public class Pausebutton : MonoBehaviour
         if (isPaused)
         {
             Time.timeScale = 0f;
-            btnImage.sprite = pauseSprite;
+            btnImage.sprite = PlaySprite;
         }
         else
         {
             Time.timeScale = 1f;
-            btnImage.sprite = PlaySprite;
+            btnImage.sprite = pauseSprite;
         }
     }
 

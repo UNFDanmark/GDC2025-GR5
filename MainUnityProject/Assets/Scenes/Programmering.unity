@@ -176,7 +176,7 @@ MonoBehaviour:
   atkSpeedMultCost: 1
   projectileMultCost: 1
   cooldownleft: 0
-  atkCooldown: 0.05
+  atkCooldown: 2
 --- !u!4 &13458398
 Transform:
   m_ObjectHideFlags: 0
