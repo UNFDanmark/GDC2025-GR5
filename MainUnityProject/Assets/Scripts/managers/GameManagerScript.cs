@@ -109,6 +109,7 @@ public class GameManagerScript : MonoBehaviour
                 tabletSpawned = true;
                 break;
             case GameState.GameOver:
+                Time.timeScale = 0f;
                 GameOverScreen.SetActive(true);
                 
                 break;

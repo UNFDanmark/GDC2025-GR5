@@ -13,6 +13,8 @@ public class CameraController : MonoBehaviour
     float maxMagnitude = 400f;
     float minMagnitude = 150f;
 
+    public bool isOrtho;
+
     public Camera mainCam;
     void Start()
     {
@@ -48,6 +50,43 @@ public class CameraController : MonoBehaviour
 
     public void ZoomCamera()
     {
+
+        if (isOrtho)
+        {
+
+
+            if (mainCam.orthographicSize < 100)
+            {
+                mainCam.orthographicSize = 100;
+            }
+            
+            if (zoomValue != 0 && mainCam.orthographicSize >= 100 &&  zoomValue != 0 && mainCam.orthographicSize <= 300)
+            {
+                print("iscalled");
+                mainCam.orthographicSize -= zoomValue;
+              
+            } else if (zoomValue != 0 && mainCam.orthographicSize <= 300)
+            {
+                mainCam.orthographicSize -= zoomValue;
+            }
+            
+            if (mainCam.orthographicSize < 100)
+            {
+                mainCam.orthographicSize = 100;
+            } else if (mainCam.orthographicSize > 300)
+            {
+                mainCam.orthographicSize = 300;
+            }
+            
+            
+            
+            return;
+        }
+        
+        
+        
+        
+        
         if (zoomValue > 0 && mainCam.transform.position.magnitude >= minMagnitude)
         {
             print("iscalled");
@@ -57,6 +96,10 @@ public class CameraController : MonoBehaviour
             mainCam.transform.Translate(Vector3.forward * (zoomValue * 10));
             print("iscalled");
         }
+        
+        
+        
+        
         
     }
 

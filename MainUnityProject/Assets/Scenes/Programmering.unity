@@ -1058,8 +1058,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 10000
   field of view: 60
-  orthographic: 0
-  orthographic size: 84.5
+  orthographic: 1
+  orthographic size: 200
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2805,6 +2805,7 @@ MonoBehaviour:
       m_Action: Camera Zoom
       m_Flags: 8
     m_Flags: 0
+  isOrtho: 1
   mainCam: {fileID: 330585545}
 --- !u!4 &734897778
 Transform:
