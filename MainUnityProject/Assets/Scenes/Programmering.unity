@@ -4552,7 +4552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1343582023
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6181,6 +6181,8 @@ MonoBehaviour:
   MoneyUI: {fileID: 564753977}
   AngelsLeftUI: {fileID: 2101910115}
   HP: {fileID: 1706564289}
+  isPlayingMusic: 0
+  isPlayingThemeMusic: 0
 --- !u!1001 &1987717367
 PrefabInstance:
   m_ObjectHideFlags: 0
