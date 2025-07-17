@@ -21,6 +21,7 @@ public class StartButton : MonoBehaviour
 
     public void BackToStart()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         print("PRINT");
         GameManagerScript.Instance.SetGameState(GameState.Menu);
     }

@@ -2087,8 +2087,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSounds:
-  - name: 
-    clip: {fileID: 0}
+  - name: MainMenu
+    clip: {fileID: 8300000, guid: 668bf007dc8ce3e4aa51eee42767f4f0, type: 3}
+  - name: Theme
+    clip: {fileID: 8300000, guid: 98271577061e13245ac748125f21d3dd, type: 3}
   sfxSounds:
   - name: CannonShoot
     clip: {fileID: 8300000, guid: a84e4c9c59996014e8f702e26a7288fe, type: 3}

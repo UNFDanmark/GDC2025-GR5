@@ -79,7 +79,8 @@ public class GameManagerScript : MonoBehaviour
        
     }
 
-
+    public bool isPlayingMusic;
+    public bool isPlayingThemeMusic;
     void Update()
     {
         
@@ -89,6 +90,13 @@ public class GameManagerScript : MonoBehaviour
         switch (gameState)
         {
             case GameState.Menu:
+                isPlayingThemeMusic = false;
+                if (!isPlayingMusic)
+                {
+                    AudioManager.Instance.PlayMusic("MainMenu");
+                    isPlayingMusic = true;
+                }
+                
                 block.SetActive(true);
                 GameOverScreen.SetActive(false);
                 Time.timeScale = 0f;
@@ -96,6 +104,12 @@ public class GameManagerScript : MonoBehaviour
             case GameState.Tutorial:
                 break;
             case GameState.SpawningWave:
+                isPlayingMusic = false;
+                if (!isPlayingThemeMusic)
+                {
+                    AudioManager.Instance.PlayMusic("Theme");
+                    isPlayingThemeMusic = true;
+                }
                 Time.timeScale = 1f;
                 WaveManagerScript.Instance.SpawnWave();
                 tabletSpawned = false;
