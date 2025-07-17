@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 2
   projectileSpeed: 0
-  attackDamage: 0
+  _attackDamage: 0
   attackSpeed: 0
   dmgMult: 0
   FireRateMult: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
   hasDeathTouch: 0
   killCounter: 0
   dragForce: 60000
-  growAmount: {x: 0.1, y: 0.1, z: 0.1}
+  growAmount: {x: 0.15, y: 0.15, z: 0.15}
 --- !u!135 &8374690034522073596
 SphereCollider:
   m_ObjectHideFlags: 0

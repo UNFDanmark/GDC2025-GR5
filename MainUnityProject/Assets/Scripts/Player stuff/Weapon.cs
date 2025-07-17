@@ -130,11 +130,11 @@ public class Weapon : MonoBehaviour
             AudioManager.Instance.PlaySFXExtra("CannonShoot");
             soundCooldownLeft = soundCooldown;
         } 
-        if (isBallista && sound2CooldownLeft <= 0)
-        {
-            AudioManager.Instance.PlaySFXExtra("BallistaShoot");
-            sound2CooldownLeft = sound2Cooldown;
-        }
+        // if (isBallista && sound2CooldownLeft <= 0)
+        // {
+        //     AudioManager.Instance.PlaySFXExtra("BallistaShoot");
+        //     sound2CooldownLeft = sound2Cooldown;
+        // }
         
         
         

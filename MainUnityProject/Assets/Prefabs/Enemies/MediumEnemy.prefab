@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5525034020927402547}
   - component: {fileID: 5927273020236134483}
   m_Layer: 0
-  m_Name: Enemy_Angel
+  m_Name: MediumEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   isDead: 0
   healthPoints: 0
-  maxHealth: 1
+  maxHealth: 5
   despawnTimer: 0
   damage: 5
   moneyDrop: 2

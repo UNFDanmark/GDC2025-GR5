@@ -161,20 +161,20 @@ MonoBehaviour:
   atkSpeedMult: 1
   projectileSpeedMult: 1
   atkDamageIncreaseAmount: 1
-  atkSpeedIncreaseAmount: 1
-  projectileSpeedIncreaseAmount: 1
+  atkSpeedIncreaseAmount: 0.7
+  projectileSpeedIncreaseAmount: 0.05
   atkDamageMultIncrease: 1
-  atkSpeedMultIncrease: 1
-  projectileMultIncrease: 1
+  atkSpeedMultIncrease: 0.5
+  projectileMultIncrease: 0.5
   atkDamageCost: 10
   atkSpeedCost: 10
   projectileSpeedCost: 10
-  atkDamageCostIncrease: 100
-  atkSpeedCostIncrease: 100
-  projectileSpeedCostIncrease: 100
-  atkDamageMultCost: 1
-  atkSpeedMultCost: 1
-  projectileMultCost: 1
+  atkDamageCostIncrease: 180
+  atkSpeedCostIncrease: 200
+  projectileSpeedCostIncrease: 180
+  atkDamageMultCost: 40
+  atkSpeedMultCost: 40
+  projectileMultCost: 40
   cooldownleft: 0
   atkCooldown: 2
 --- !u!4 &13458398
@@ -604,19 +604,19 @@ MonoBehaviour:
   atkSpeedIncreaseAmount: 1
   projectileSpeedIncreaseAmount: 1
   atkDamageMultIncrease: 1
-  atkSpeedMultIncrease: 1
+  atkSpeedMultIncrease: 0.7
   projectileMultIncrease: 1
   atkDamageCost: 100
   atkSpeedCost: 100
   projectileSpeedCost: 100
-  atkDamageCostIncrease: 100
-  atkSpeedCostIncrease: 100
-  projectileSpeedCostIncrease: 100
-  atkDamageMultCost: 0
-  atkSpeedMultCost: 0
-  projectileMultCost: 0
+  atkDamageCostIncrease: 200
+  atkSpeedCostIncrease: 220
+  projectileSpeedCostIncrease: 200
+  atkDamageMultCost: 50
+  atkSpeedMultCost: 50
+  projectileMultCost: 50
   cooldownleft: 0
-  atkCooldown: 2.5
+  atkCooldown: 3
 --- !u!4 &161544803
 Transform:
   m_ObjectHideFlags: 0
@@ -2164,7 +2164,7 @@ MonoBehaviour:
   - name: Coin
     clip: {fileID: 8300000, guid: 6d9974b530b468542ad2263c8c80fbfc, type: 3}
   sfxSoundArray: []
-  musicSource: {fileID: 591404634}
+  musicSource: {fileID: 1955582480}
   sfxSource: {fileID: 591404634}
   extraSFXSource: {fileID: 1852814662}
 --- !u!4 &591404636
@@ -2181,6 +2181,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1852814661}
+  - {fileID: 1955582479}
   m_Father: {fileID: 1437139426}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &601697951
@@ -2741,22 +2742,22 @@ MonoBehaviour:
   atkSpeedMult: 0
   projectileSpeedMult: 0
   atkDamageIncreaseAmount: 1
-  atkSpeedIncreaseAmount: 1
+  atkSpeedIncreaseAmount: 0.7
   projectileSpeedIncreaseAmount: 1
-  atkDamageMultIncrease: 0
-  atkSpeedMultIncrease: 0
+  atkDamageMultIncrease: 1
+  atkSpeedMultIncrease: 0.4
   projectileMultIncrease: 0
   atkDamageCost: 100
   atkSpeedCost: 100
   projectileSpeedCost: 100
-  atkDamageCostIncrease: 100
-  atkSpeedCostIncrease: 100
-  projectileSpeedCostIncrease: 100
-  atkDamageMultCost: 0
-  atkSpeedMultCost: 0
-  projectileMultCost: 0
+  atkDamageCostIncrease: 180
+  atkSpeedCostIncrease: 200
+  projectileSpeedCostIncrease: 180
+  atkDamageMultCost: 40
+  atkSpeedMultCost: 40
+  projectileMultCost: 80
   cooldownleft: 0
-  atkCooldown: 0.5
+  atkCooldown: 2.4
 --- !u!4 &717172659
 Transform:
   m_ObjectHideFlags: 0
@@ -3337,11 +3338,185 @@ MonoBehaviour:
   enemyList: []
   difficulties:
   - difficultyName: tutorial
-    amountOfEnemiesToSpawn: 200
+    amountOfEnemiesToSpawn: 20
     useWaveTimer: 1
     waveTimeLength: 5
     spawnerCooldown: 4.5
     enemyPrefab: {fileID: 7717888739778281036, guid: 84b50eca0d720dd41abf77dcdbd71f27, type: 3}
+  - difficultyName: tutorial
+    amountOfEnemiesToSpawn: 20
+    useWaveTimer: 1
+    waveTimeLength: 5
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 84b50eca0d720dd41abf77dcdbd71f27, type: 3}
+  - difficultyName: tutorial
+    amountOfEnemiesToSpawn: 80
+    useWaveTimer: 1
+    waveTimeLength: 5
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 84b50eca0d720dd41abf77dcdbd71f27, type: 3}
+  - difficultyName: Easy
+    amountOfEnemiesToSpawn: 80
+    useWaveTimer: 1
+    waveTimeLength: 5
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 1e7b04b50825ff744892fe963e5973d6, type: 3}
+  - difficultyName: Medium
+    amountOfEnemiesToSpawn: 150
+    useWaveTimer: 1
+    waveTimeLength: 5
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: eca26d980f8685d408455c0747bf7725, type: 3}
+  - difficultyName: Medium
+    amountOfEnemiesToSpawn: 200
+    useWaveTimer: 1
+    waveTimeLength: 5
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: eca26d980f8685d408455c0747bf7725, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 400
+    useWaveTimer: 1
+    waveTimeLength: 8
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 600
+    useWaveTimer: 1
+    waveTimeLength: 9
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 800
+    useWaveTimer: 1
+    waveTimeLength: 12
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 1000
+    useWaveTimer: 1
+    waveTimeLength: 12
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 1500
+    useWaveTimer: 1
+    waveTimeLength: 14
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
+  - difficultyName: Hard
+    amountOfEnemiesToSpawn: 2000
+    useWaveTimer: 1
+    waveTimeLength: 15
+    spawnerCooldown: 4.5
+    enemyPrefab: {fileID: 7717888739778281036, guid: 23ba408ee00020c48bb4634206e52157, type: 3}
   currentWave: 0
   enemySpawner: {fileID: 671274052}
 --- !u!4 &845517162
@@ -6082,7 +6257,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.018
+  m_Volume: 0.386
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6313,6 +6488,135 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIBLOCKER: {fileID: 1343582022}
   pluh: 1
+--- !u!1 &1955582478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1955582479}
+  - component: {fileID: 1955582480}
+  m_Layer: 0
+  m_Name: Music source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1955582479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955582478}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 591404636}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1955582480
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955582478}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.523
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1979869185
 GameObject:
   m_ObjectHideFlags: 0

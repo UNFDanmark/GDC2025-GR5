@@ -21,7 +21,7 @@ public class CatapultShootScript : MonoBehaviour
     {
         print("pluh");
         disableRock();
-        
+        AudioManager.Instance.PlaySFX("CatapultShoot");
          GameObject tempProjectile = Instantiate(latestCatapultScript.projectilePrefab, basketPoint.position, Quaternion.identity);
          //tempProjectile.transform.SetLocalPositionAndRotation(transform.position, Quaternion.LookRotation(targetDirection));
          tempProjectile.GetComponent<ProjectileScript>().GetStatsFromWeapon(latestCatapultScript);
